@@ -24,15 +24,15 @@ robots: noindex
           </h4>
         </div>
         <div class="timeline-body">
-          {% if project.desc %}
-            {{ project.desc | markdownify }}
-          {% endif %}
-          {% if project.gh_user and project.repo %}
-            <div style="margin-top: 10px;">
-              <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
-                <i class="fa-brands fa-github"></i> GitHub
-              </a>
-            </div>
+            {% if project.desc %}
+            <p>
+              {{ project.desc | markdownify | strip_newlines }}
+              {% if project.gh_user and project.repo %}
+                <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}" style="margin-left: 8px;">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              {% endif %}
+            </p>
           {% endif %}
         </div>
       </div>
@@ -58,14 +58,14 @@ robots: noindex
         </div>
         <div class="timeline-body">
           {% if project.desc %}
-            {{ project.desc | markdownify }}
-          {% endif %}
-          {% if project.gh_user and project.repo %}
-            <div style="margin-top: 10px;">
-              <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
-                <i class="fa-brands fa-github"></i> GitHub
-              </a>
-            </div>
+            <p>
+              {{ project.desc | markdownify | strip_newlines }}
+              {% if project.gh_user and project.repo %}
+                <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}" style="margin-left: 8px;">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              {% endif %}
+            </p>
           {% endif %}
         </div>
       </div>

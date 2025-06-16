@@ -1,7 +1,7 @@
 # projects section data
 preprints:
   - title: Doubly Robust Alignment for Large Language Models
-    author: "**Ye, K\\*.**, Zhou, H\\*., Zhu, J\\*., Quinzan, F. and Shi, C."
+    author: "Xu, E\\*.,**Ye, K\\*.**, Zhou, H\\*.,Zhu, L.,  Quinzan, F. and Shi, C."
     url: https://arxiv.org/abs/2506.01183
     img: https://example.com/image1.png
     gh_user: DRPO4LLM
