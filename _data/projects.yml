@@ -6,7 +6,7 @@ preprints:
     img: '/images/project_figure/DRPO.png'
     gh_user: DRPO4LLM
     repo: DRPO4LLM
-    desc: "**Python module** for DRPO4LLM."
+    desc: "<strong>Python module</strong> for DRPO4LLM."
 
   - title: Robust Reinforcement Learning from Human Feedback for Large Language Models Fine-Tuning
     author: "**Ye, K\\*.**, Zhou, H\\*., Zhu, J\\*., Quinzan, F. and Shi, C."
@@ -14,6 +14,6 @@ preprints:
     img: '/images/project_figure/VRPO.png'
     gh_user: VRPO
     repo: VRPO
-    desc: "**Python module** for VRPO."
+    desc: "<strong>Python module</strong> for VRPO."
 
 published:
