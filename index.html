@@ -14,11 +14,12 @@ robots: noindex
       </div>
       <div class="timeline-panel">
         <div class="timeline-heading">
-          <strong>{{ project.gh_user }}</strong>
-          <br>
+          {% if project.author %}
+            <div class="project-author">{{ project.author | markdownify }}</div>
+          {% endif %}
           <h4>
-            <a href="{{ project.link | default: 'https://github.com/' | append: project.gh_user | append: '/' | append: project.repo }}" target="_blank">
-              {{ project.name }}
+            <a href="{{ project.url }}" target="_blank">
+              {{ project.title }}
             </a>
           </h4>
         </div>
@@ -26,7 +27,7 @@ robots: noindex
           {% if project.desc %}
             {{ project.desc | markdownify }}
           {% endif %}
-          {% if project.repo %}
+          {% if project.gh_user and project.repo %}
             <div style="margin-top: 10px;">
               <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
                 <i class="fa-brands fa-github"></i> GitHub
@@ -46,11 +47,12 @@ robots: noindex
       </div>
       <div class="timeline-panel">
         <div class="timeline-heading">
-          <strong>{{ project.gh_user }}</strong>
-          <br>
+          {% if project.author %}
+            <div class="project-author">{{ project.author | markdownify }}</div>
+          {% endif %}
           <h4>
-            <a href="{{ project.link | default: 'https://github.com/' | append: project.gh_user | append: '/' | append: project.repo }}" target="_blank">
-              {{ project.name }}
+            <a href="{{ project.url }}" target="_blank">
+              {{ project.title }}
             </a>
           </h4>
         </div>
@@ -58,7 +60,7 @@ robots: noindex
           {% if project.desc %}
             {{ project.desc | markdownify }}
           {% endif %}
-          {% if project.repo %}
+          {% if project.gh_user and project.repo %}
             <div style="margin-top: 10px;">
               <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
                 <i class="fa-brands fa-github"></i> GitHub
