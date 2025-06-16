@@ -17,7 +17,7 @@ author:
   github_username:  noncollapse
   linkedin_username:  ''
   meetup_name: ''
-
+  scholar: ''
 # Build settings
 destination: _site
 markdown: kramdown
