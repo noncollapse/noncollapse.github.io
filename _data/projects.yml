@@ -1,7 +1,7 @@
 # projects section data
 preprints:
   - title: Doubly Robust Alignment for Large Language Models
-    author: "**Ye, K\*.**, Xu, E\*., Zhou, H\*., Zhu, L., Quinzan, F. and Shi, C."
+    author: "**Ye, K\\*.**, Zhou, H\\*., Zhu, J\\*., Quinzan, F. and Shi, C."
     url: https://arxiv.org/abs/2506.01183
     img: https://example.com/image1.png
     gh_user: DRPO4LLM
@@ -9,7 +9,7 @@ preprints:
     desc: "**Python module** for DRPO4LLM."
 
   - title: Robust Reinforcement Learning from Human Feedback for Large Language Models Fine-Tuning
-    author: "**Ye, K\*.**, Zhou, H\*., Zhu, J\*., Quinzan, F. and Shi, C."
+    author: "**Ye, K\\*.**, Zhou, H\\*., Zhu, J\\*., Quinzan, F. and Shi, C."
     url: https://arxiv.org/abs/2504.03784
     img: https://example.com/image2.png
     gh_user: VRPO
