@@ -59,14 +59,14 @@ robots: noindex
           </div>
           <div class="timeline-body">
             {% if project.desc %}
-              <p style="display: flex; align-items: center; gap: 8px;">
-                <span>{{ project.desc | strip_newlines }}</span>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="display: inline;">{{ project.desc | strip_newlines }}</span>
                 {% if project.gh_user and project.repo %}
                   <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
                     <i class="fa-brands fa-github"></i>
                   </a>
                 {% endif %}
-              </p>
+              </div>
             {% endif %}
           </div>
         </div>
@@ -92,14 +92,14 @@ robots: noindex
           </div>
           <div class="timeline-body">
             {% if project.desc %}
-              <p style="display: flex; align-items: center; gap: 8px;">
-                <span>{{ project.desc | strip_newlines }}</span>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="display: inline;">{{ project.desc | strip_newlines }}</span>
                 {% if project.gh_user and project.repo %}
                   <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
                     <i class="fa-brands fa-github"></i>
                   </a>
                 {% endif %}
-              </p>
+              </div>
             {% endif %}
           </div>
         </div>
