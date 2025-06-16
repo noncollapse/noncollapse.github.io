@@ -11,12 +11,9 @@ font_awesome: '5125712fe4.js'
 author:
   name: 'Kai Ye'
   email: k.ye1@lse.ac.uk
-  mastodon: ''
-  twitter_username: ''
 #  facebook_username: joshgerdes
   github_username:  noncollapse
   linkedin_username:  ''
-  meetup_name: ''
   scholar: ''
 # Build settings
 destination: _site
