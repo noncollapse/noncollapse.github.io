@@ -4,7 +4,6 @@ robots: noindex
 ---
 
 <!--<div class="main-post-list">-->
-
 <ul class="timeline">
 
   <h2 style="margin-left: 20px;">📝 Preprints</h2>
@@ -15,8 +14,10 @@ robots: noindex
       </div>
       <div class="timeline-panel">
         <div class="timeline-heading">
+          <strong>{{ project.gh_user }}</strong>
+          <br>
           <h4>
-            <a href="https://github.com/{{ project.gh_user }}/{{ project.repo }}" target="_blank">
+            <a href="{{ project.link | default: 'https://github.com/' | append: project.gh_user | append: '/' | append: project.repo }}" target="_blank">
               {{ project.name }}
             </a>
           </h4>
@@ -24,23 +25,14 @@ robots: noindex
         <div class="timeline-body">
           {% if project.desc %}
             {{ project.desc | markdownify }}
-          {% else %}
-            <div repotext="{{ project.repo }}">
-              <span class="desc"></span>
+          {% endif %}
+          {% if project.repo %}
+            <div style="margin-top: 10px;">
+              <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
             </div>
           {% endif %}
-          <div user="{{ project.gh_user }}" repo="{{ project.repo }}" class="ghbtn" style="margin-top: 10px;">
-            <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/stargazers">
-              <i class="fa fa-star"></i><span class="star"> ...</span>
-            </a>&emsp;&emsp;
-            <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/network">
-              <i class="fa fa-code-fork"></i><span class="fork"> ...</span>
-            </a>&emsp;&emsp;
-            <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/watchers">
-              <i class="far fa-eye"></i><span class="watchers"> ...</span>
-            </a>
-            <div style="height: 10px;"></div>
-          </div>
         </div>
       </div>
     </li>
@@ -54,8 +46,10 @@ robots: noindex
       </div>
       <div class="timeline-panel">
         <div class="timeline-heading">
+          <strong>{{ project.gh_user }}</strong>
+          <br>
           <h4>
-            <a href="https://github.com/{{ project.gh_user }}/{{ project.repo }}" target="_blank">
+            <a href="{{ project.link | default: 'https://github.com/' | append: project.gh_user | append: '/' | append: project.repo }}" target="_blank">
               {{ project.name }}
             </a>
           </h4>
@@ -63,29 +57,17 @@ robots: noindex
         <div class="timeline-body">
           {% if project.desc %}
             {{ project.desc | markdownify }}
-          {% else %}
-            <div repotext="{{ project.repo }}">
-              <span class="desc"></span>
+          {% endif %}
+          {% if project.repo %}
+            <div style="margin-top: 10px;">
+              <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
             </div>
           {% endif %}
-          <div user="{{ project.gh_user }}" repo="{{ project.repo }}" class="ghbtn" style="margin-top: 10px;">
-            <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/stargazers">
-              <i class="fa fa-star"></i><span class="star"> ...</span>
-            </a>&emsp;&emsp;
-            <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/network">
-              <i class="fa fa-code-fork"></i><span class="fork"> ...</span>
-            </a>&emsp;&emsp;
-            <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/watchers">
-              <i class="far fa-eye"></i><span class="watchers"> ...</span>
-            </a>
-            <div style="height: 10px;"></div>
-          </div>
         </div>
       </div>
     </li>
   {% endfor %}
 
 </ul>
-
-
-

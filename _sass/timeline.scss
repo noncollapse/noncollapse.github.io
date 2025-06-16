@@ -6,14 +6,7 @@
 }
 
 .timeline:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 40px;
-    width: 0px; // draw vertical timeline line (2px)
-    margin-left: -1.5px;
-    background-color: #f1f1f1;
+    display: none !important;
 }
 
 .timeline>li {
