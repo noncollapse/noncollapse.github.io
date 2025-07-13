@@ -1,7 +1,7 @@
 ---
 layout: null
 sitemap:
-  exclude: 'yes'
+  exclude: 'no'
 ---
 function toggleMobileMenu() {
   $('.navigation-wrapper').toggleClass('visible');
@@ -35,6 +35,9 @@ $(document).ready(function () {
   })
 
   if (window.location.hash && window.location.hash == '#projects') {
+    $('a.panel-button').click();
+  }
+    if (window.location.hash && window.location.hash == '#aboutme') {
     $('a.panel-button').click();
   }
 
