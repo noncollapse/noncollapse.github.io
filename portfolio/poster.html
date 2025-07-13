@@ -21,7 +21,7 @@ robots: "index, follow"
     <style>
     .poster-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 24px;
     padding: 0;
     list-style: none;
@@ -74,7 +74,6 @@ robots: "index, follow"
 
     <!-- 海报模块 -->
     <section id="posters" style="margin-bottom: 40px;">
-        <h2 style="margin-bottom: 32px; font-size: 2rem; font-weight: bold; color: #333;">📜 海报</h2>
         <ul class="poster-grid">
         {% for p in site.data.alldetails.posters %}
         <li>
