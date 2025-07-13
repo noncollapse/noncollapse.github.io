@@ -1,0 +1,77 @@
+---
+layout: page
+title: Projects
+permalink: /projects/
+---
+
+<div id="projects">
+  <ul class="timeline">
+
+    <h2 style="margin-left: 20px;">📝 Preprints</h2>
+    {% for project in site.data.projects.preprints %}
+      <li class="timeline-inverted">
+        <div class="timeline-image">
+          <img class="img-me" src="{{ project.img | prepend: site.baseurl }}" alt="">
+        </div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4>
+              <a href="{{ project.url }}" target="_blank">
+                {{ project.title }}
+              </a>
+            </h4>
+            {% if project.author %}
+              <div class="project-author">{{ project.author | markdownify }}</div>
+            {% endif %}
+          </div>
+          <div class="timeline-body">
+            {% if project.desc %}
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span>{{ project.desc }}</span>
+                {% if project.gh_user and project.repo %}
+                  <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+
+    <h2 style="margin-left: 20px;">📄 Published</h2>
+    {% for project in site.data.projects.published %}
+      <li class="timeline-inverted">
+        <div class="timeline-image">
+          <img class="img-me" src="{{ project.img | prepend: site.baseurl }}" alt="">
+        </div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4>
+              <a href="{{ project.url }}" target="_blank">
+                {{ project.title }}
+              </a>
+            </h4>
+            {% if project.author %}
+              <div class="project-author">{{ project.author | markdownify }}</div>
+            {% endif %}
+          </div>
+          <div class="timeline-body">
+            {% if project.desc %}
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span>{{ project.desc }}</span>
+                {% if project.gh_user and project.repo %}
+                  <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+
+  </ul>
+</div>
