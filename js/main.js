@@ -11,7 +11,9 @@ function toggleMobileMenu() {
 
 $(document).ready(function () {
   $('a.panel-button').click(function (e) {
-    if ($('.content-wrapper').hasClass('showing')){
+      var clickedHash = $(this).attr('href').split('#')[1];
+      var currentHash = window.location.hash.substring(1);
+    if (clickedHash === currentHash) {
       $('.content-wrapper').removeClass('animated slideInRight')
       $('.panel-cover').removeClass('panel-cover--collapsed')
       $('.panel-cover').css('max-width', '100%')
