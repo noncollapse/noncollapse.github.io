@@ -7,6 +7,7 @@ profilepic: '/images/tzuehlke.jpg'
 bkimage: '/images/bk1.jpg'
 google_analytics: UA-XXXXXX-X
 font_awesome: '5125712fe4.js'
+robots: "index, follow"
 
 author:
   name: 'Kai Ye'
