@@ -94,22 +94,4 @@ robots: "index, follow"
         </ul>
     </section>
 
-    <!-- 已发布的项目模块 -->
-    <section id="published" style="margin-bottom: 40px;">
-        <h2 style="margin-bottom: 32px; font-size: 2rem; font-weight: bold; color: #333;">📚 已发布</h2>
-        <ul style="font-size: 16px; line-height: 1.8; padding-left: 20px; list-style-type: none;">
-            {% for pub in site.data.alldetails.published %}
-            <li style="border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 20px;">
-                <h4 style="font-size: 1.3rem; font-weight: bold;">
-                    <a href="{{ pub.url }}" target="_blank" style="color: #007acc; text-decoration: none;">{{ pub.title }}</a>
-                </h4>
-                <p style="color: #555; font-size: 1rem;">{{ pub.author }}</p>
-                <p><strong>期刊:</strong> {{ pub.journal }}</p>
-                <p style="color: #555; font-size: 1rem;">{{ pub.desc }}</p>
-                <p><strong>GitHub:</strong> <a href="https://github.com/{{ pub.gh_user }}" target="_blank" style="color: #007acc;">{{ pub.repo }}</a></p>
-            </li>
-            {% endfor %}
-        </ul>
-    </section>
-
 </div>
