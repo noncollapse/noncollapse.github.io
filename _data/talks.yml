@@ -1,0 +1,11 @@
+- title: "Talk Title 1"
+  event: "Conference Name"
+  date: "2025-06-01"
+  description: "A brief description of the talk."
+  url: "https://linktotalk.com"
+  
+- title: "Talk Title 2"
+  event: "Symposium Name"
+  date: "2025-07-01"
+  description: "A brief description of the talk."
+  url: "https://linktotalk2.com"
