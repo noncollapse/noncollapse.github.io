@@ -18,44 +18,29 @@ preprints:
 published:
 
 teaching:
-  - type: talk
-    title: Advanced RL Techniques for LLMs
-    description: "Exploring advanced RL techniques for optimizing large language models."
-    event: "ICLR 2024"
-    date: "2024-05-12"
+  # - type: talk
+  #   title: Advanced RL Techniques for LLMs
+  #   description: "Exploring advanced RL techniques for optimizing large language models."
+  #   event: "ICLR 2024"
+  #   date: "2024-05-12"
 
-  - type: class
-    title: Machine Learning Fundamentals
-    description: "A comprehensive course on the basics of machine learning, including supervised and unsupervised learning."
-    event: "LSE, Fall 2024"
-    date: "2024-09-01"
+  # - type: class
+  #   title: Machine Learning Fundamentals
+  #   description: "A comprehensive course on the basics of machine learning, including supervised and unsupervised learning."
+  #   event: "LSE, Fall 2024"
+  #   date: "2024-09-01"
 
 posters:
-  - title: DRPO and its Applications in RL
-    event: "NeurIPS 2024"
-    date: "2024-12-01"
-    description: "Poster explaining DRPO and its role in reinforcement learning for large-scale models."
-    url: "https://example.com/drpo_poster"
+  # - title: DRPO and its Applications in RL
+  #   event: "NeurIPS 2024"
+  #   date: "2024-12-01"
+  #   description: "Poster explaining DRPO and its role in reinforcement learning for large-scale models."
+  #   url: "https://example.com/drpo_poster"
   
-  - title: LLM Fine-Tuning with Human Feedback
-    event: "ICML 2024"
-    date: "2024-06-20"
-    description: "Poster detailing how human feedback improves fine-tuning LLMs for specific tasks."
-    url: "https://example.com/llm_finetuning_poster"
+  # - title: LLM Fine-Tuning with Human Feedback
+  #   event: "ICML 2024"
+  #   date: "2024-06-20"
+  #   description: "Poster detailing how human feedback improves fine-tuning LLMs for specific tasks."
+  #   url: "https://example.com/llm_finetuning_poster"
 
 published:
-  - title: Improving LLM Robustness with Uncertainty Estimation
-    author: "Ye, K.*, Xu, E., Zhou, H., Quinzan, F., and Shi, C."
-    journal: "JMLR 2024"
-    url: "https://jmlr.org/papers/volume25/2024/2501"
-    gh_user: LLMRobustness
-    repo: LLMRobustness
-    desc: "A method for enhancing LLM robustness through uncertainty estimation."
-    
-  - title: Self-Play Strategies in LLMs
-    author: "Ye, K., Zhou, H., Zhu, J., Shi, C., and Quinzan, F."
-    journal: "ICLR 2024"
-    url: "https://openreview.net/forum?id=XYZ123"
-    gh_user: SelfPlayLLM
-    repo: SelfPlayLLM
-    desc: "Self-play strategies for training LLMs in complex task learning scenarios." 
