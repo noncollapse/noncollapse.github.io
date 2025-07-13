@@ -1,0 +1,64 @@
+---
+title: "Research"
+permalink: /portfolio/research
+robots: "index, follow" 
+---
+
+
+<header style="background: url('/path/to/your/image.jpg') center center no-repeat; background-size: cover; padding: 60px 0; text-align: center; color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
+    <nav style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-family: 'Arial', sans-serif;">
+        <div>
+            <a href="/" style="font-size: 1.8rem; font-weight: bold; color: white; text-decoration: none;">Noncollapse</a>
+        </div>
+        <div>
+            <a href="/portfolio/research" style="margin-right: 20px; font-size: 1.1rem; color: #fff; text-decoration: none;">Research</a>
+            <a href="/portfolio/teaching" style="margin-right: 20px; font-size: 1.1rem; color: #fff; text-decoration: none;">Teaching & Talks</a>
+            <a href="/portfolio/posters" style="margin-right: 20px; font-size: 1.1rem; color: #fff; text-decoration: none;">Posters</a>
+            <a href="https://noncollapse.github.io" style="font-size: 1.1rem; color: #fff; text-decoration: none;">About me</a>
+        </div>
+    </nav>
+    <h1 style="font-size: 3rem; font-weight: bold; margin-top: 20px;">Azure Talk</h1>
+</header>
+
+<!-- 主体内容区域 -->
+<div style="padding: 40px 20px; max-width: 1200px; margin: 0 auto; font-family: 'Arial', sans-serif;">
+
+    <!-- 研究模块 -->
+    <section id="research" style="margin-bottom: 40px;">
+        <!-- 预印本 Preprints -->
+        <h3 style="font-size:1.4rem;font-weight:bold;color:#333;margin:32px 0 12px;">Some preprints</h3>
+        <ul style="list-style:none;padding:0;line-height:1.6;font-size:1rem;color:#555;">
+        {% for p in site.data.alldetails.preprints %}
+        <li style="margin-bottom:10px;">
+            {{ p.author }} 
+            <a href="{{ p.url }}" target="_blank" style="color:#0069c2;text-decoration:none;font-weight:600;">
+            {{ p.title }}
+            </a> Python module 
+            <a href="https://github.com/{{ p.gh_user }}/{{ p.repo }}" target="_blank" style="color:#0069c2;text-decoration:none;">
+            {{ p.repo }}
+            </a>
+        </li>
+        {% endfor %}
+        </ul>
+
+        <!-- 已发布 Published -->
+        <h3 style="font-size:1.4rem;font-weight:bold;color:#333;margin:32px 0 12px;">Published</h3>
+        <ul style="list-style:none;padding:0;line-height:1.6;font-size:1rem;color:#555;">
+        {% for p in site.data.alldetails.published %}
+        <li style="margin-bottom:10px;">
+            {{ p.author }} 
+            <a href="{{ p.url }}" target="_blank" style="color:#0069c2;text-decoration:none;font-weight:600;">
+            {{ p.title }}
+            </a> Python module
+            <a href="https://github.com/{{ p.gh_user }}/{{ p.repo }}" target="_blank" style="color:#0069c2;text-decoration:none;">
+            {{ p.repo }}
+            </a>
+        </li>
+        {% endfor %}
+        </ul>
+
+    </section>
+
+
+
+</div>

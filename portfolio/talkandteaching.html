@@ -1,0 +1,61 @@
+---
+title: "Teaching and Talk"
+permalink: /portfolio/teachingandtalk
+robots: "index, follow" 
+---
+
+
+<header style="background: url('/path/to/your/image.jpg') center center no-repeat; background-size: cover; padding: 60px 0; text-align: center; color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
+    <nav style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-family: 'Arial', sans-serif;">
+        <div>
+            <a href="/" style="font-size: 1.8rem; font-weight: bold; color: white; text-decoration: none;">Noncollapse</a>
+        </div>
+        <div>
+            <a href="/portfolio/research" style="margin-right: 20px; font-size: 1.1rem; color: #fff; text-decoration: none;">Research</a>
+            <a href="/portfolio/teaching" style="margin-right: 20px; font-size: 1.1rem; color: #fff; text-decoration: none;">Teaching & Talks</a>
+            <a href="/portfolio/posters" style="margin-right: 20px; font-size: 1.1rem; color: #fff; text-decoration: none;">Posters</a>
+            <a href="https://noncollapse.github.io" style="font-size: 1.1rem; color: #fff; text-decoration: none;">About me</a>
+        </div>
+    </nav>
+    <h1 style="font-size: 3rem; font-weight: bold; margin-top: 20px;">Azure Talk</h1>
+</header>
+
+<!-- 主体内容区域 -->
+<div style="padding: 40px 20px; max-width: 1200px; margin: 0 auto; font-family: 'Arial', sans-serif;">
+
+
+    <section id="teaching" style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 32px; font-size: 2rem; font-weight: bold; color: #333;">Talks</h2>
+        <ul style="list-style-type: none; padding-left: 0; font-size: 1.1rem; color: #333;">
+        {% for item in site.data.alldetails.talk %}
+        <li style="margin-bottom: 16px;">
+            {{ item.event }}, {{ item.date }}, <strong>{{ item.title }}</strong>
+            {% if item.link %}
+            , <a href="{{ item.link }}" target="_blank" style="color: #007acc; text-decoration: none;">online record</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+        </ul>
+
+        <!-- Class 部分 -->
+        <h2 style="margin: 48px 0 32px; font-size: 2rem; font-weight: bold; color: #333;">Class</h2>
+        {% for item in site.data.alldetails.teaching %}
+        <div style="margin-bottom: 30px;">
+        <h4 style="font-size: 1.3rem; font-weight: bold; color: #007acc;">
+            {% if item.link %}
+            <a href="{{ item.link }}" target="_blank" style="color: #007acc; text-decoration: none;">{{ item.title }}</a>
+            {% else %}
+            {{ item.title }}
+            {% endif %}
+        </h4>
+        <p style="color: #555; font-size: 1.1rem;">{{ item.description }}</p>
+        <p><strong>课程：</strong> {{ item.event }}<br><strong>时间：</strong> {{ item.date }}</p>
+        </div>
+        {% endfor %}
+
+    </section>
+
+
+
+
+</div>

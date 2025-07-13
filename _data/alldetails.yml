@@ -17,12 +17,16 @@ preprints:
 
 published:
 
-teaching:
-  # - type: talk
-  #   title: Advanced RL Techniques for LLMs
-  #   description: "Exploring advanced RL techniques for optimizing large language models."
-  #   event: "ICLR 2024"
-  #   date: "2024-05-12"
+talk:
+  - title: VRPO: Robust Reinforcement Learning from Human Feedback for Large Language Models Fine-Tuning
+    event: gouxionghui Online Seminar(Invited)
+    date: July 2025
+    link: https://www.bilibili.com/video/BV17oMQzyEcC/?spm_id_from=333.1387.homepage.video_card.click
+  - title: VRPO: Robust Reinforcement Learning from Human Feedback for Large Language Models Fine-Tuning
+    event: Annual Conference of Chinese Statistical Association of Young Scholars(Invited)
+    date: April 2025
+  
+
 
   # - type: class
   #   title: Machine Learning Fundamentals
@@ -30,7 +34,25 @@ teaching:
   #   event: "LSE, Fall 2024"
   #   date: "2024-09-01"
 
+teaching:
+  # - type: class
+  #   title: Machine Learning Fundamentals
+  #   description: "A comprehensive course on the basics of machine learning, including supervised and unsupervised learning."
+  #   event: "LSE, Fall 2024"
+  #   date: "2024-09-01"
+
 posters:
+  - title: DRPO Poster
+    event: ICML,MOFA,2025
+    img: /posters/images/DRPO_poster.jpg
+    url: /posters/DRPO_poster.pdf 
+
+  - title: VRPO Poster
+    event: ICML,MOFA,2025
+    img: /posters/images/VRPO_poster.jpg
+    url: /posters/VRPO_poster.pdf 
+
+
   # - title: DRPO and its Applications in RL
   #   event: "NeurIPS 2024"
   #   date: "2024-12-01"

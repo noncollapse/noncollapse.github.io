@@ -1,0 +1,94 @@
+---
+title: "Posters"
+permalink: /portfolio/poster
+robots: "index, follow" 
+---
+
+
+<header style="background: url('/path/to/your/image.jpg') center center no-repeat; background-size: cover; padding: 60px 0; text-align: center; color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
+    <nav style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-family: 'Arial', sans-serif;">
+        <div>
+            <a href="/" style="font-size: 1.8rem; font-weight: bold; color: white; text-decoration: none;">Noncollapse</a>
+        </div>
+        <div>
+            <a href="/portfolio/research" style="margin-right: 20px; font-size: 1.1rem; color: #fff; text-decoration: none;">Research</a>
+            <a href="/portfolio/teaching" style="margin-right: 20px; font-size: 1.1rem; color: #fff; text-decoration: none;">Teaching & Talks</a>
+            <a href="/portfolio/posters" style="margin-right: 20px; font-size: 1.1rem; color: #fff; text-decoration: none;">Posters</a>
+            <a href="https://noncollapse.github.io" style="font-size: 1.1rem; color: #fff; text-decoration: none;">About me</a>
+        </div>
+    </nav>
+    <h1 style="font-size: 3rem; font-weight: bold; margin-top: 20px;">Azure Talk</h1>
+    <style>
+    .poster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+    padding: 0;
+    list-style: none;
+    }
+
+    .poster-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: block;
+    text-decoration: none;
+    }
+
+    .poster-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+    }
+
+    .poster-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    }
+
+    .poster-info {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    font-size: 0.85rem;
+    padding: 8px 10px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    }
+
+    .poster-card:hover .poster-info {
+    opacity: 1;
+    }
+    </style>
+
+
+
+</header>
+
+<!-- 主体内容区域 -->
+<div style="padding: 40px 20px; max-width: 1200px; margin: 0 auto; font-family: 'Arial', sans-serif;">
+
+    <!-- 海报模块 -->
+    <section id="posters" style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 32px; font-size: 2rem; font-weight: bold; color: #333;">📜 海报</h2>
+        <ul class="poster-grid">
+        {% for p in site.data.alldetails.posters %}
+        <li>
+            <a class="poster-card" href="{{ p.url }}" target="_blank">
+            <img src="{{ p.img | prepend: site.baseurl }}" alt="{{ p.title }}">
+            <div class="poster-info">
+                {{ p.title }}<br>
+                {{ p.event }}
+            </div>
+            </a>
+        </li>
+        {% endfor %}
+        </ul>
+
+    </section>
+
+</div>
