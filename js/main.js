@@ -17,7 +17,7 @@ $(document).ready(function () {
       $('.panel-cover').css('max-width', '100%')
       $('.panel-cover').animate({'width': '100%'}, 400, swing = 'swing', function () {})
       $('.content-wrapper').removeClass('showing')
-      history.pushState("", document.title, window.location.pathname + window.location.search + window.location.hash);
+      history.pushState("", document.title, window.location.pathname + window.location.search);
       //window.location.hash = '' // leaves #
       e.preventDefault();
       return;
