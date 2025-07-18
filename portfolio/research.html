@@ -5,16 +5,30 @@ robots: "index, follow"
 ---
 
 
-<header style="background: url('/images/cover.jpg') center center no-repeat; background-size: cover; padding: 60px 0; text-align: center; color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
-    <nav style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-family: 'Arial', sans-serif;">
-        <div>
-            <a href="https://noncollapse.github.io/portfolio/research" style="margin-right: 20px; font-size: 1.1rem; color: #fff; text-decoration: none;">Research</a>
-            <a href="https://noncollapse.github.io/portfolio/teachingandtalk" style="margin-right: 20px; font-size: 1.1rem; color: #fff; text-decoration: none;">Teaching & Talks</a>
-            <a href="https://noncollapse.github.io/portfolio/posters" style="margin-right: 20px; font-size: 1.1rem; color: #fff; text-decoration: none;">Posters</a>
-            <a href="https://noncollapse.github.io" style="font-size: 1.1rem; color: #fff; text-decoration: none;">About me</a>
-        </div>
-    </nav>
+<header style="background: url('/images/cover.jpg') center center no-repeat; background-size: cover; padding: 60px 0; text-align: center; color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); position: relative;">
     <h1 style="font-size: 3rem; font-weight: bold; margin-top: 20px;">Kai's Portfolio</h1>
+
+    <nav style="position: absolute; bottom: 20px; right: 40px; font-family: 'Arial', sans-serif;">
+        <a href="https://noncollapse.github.io/portfolio/research" class="nav-link">Research</a>
+        <a href="https://noncollapse.github.io/portfolio/teachingandtalk" class="nav-link">Teaching & Talks</a>
+        <a href="https://noncollapse.github.io/portfolio/posters" class="nav-link">Posters</a>
+        <a href="https://noncollapse.github.io" class="nav-link">About me</a>
+    </nav>
+
+    <style>
+        .nav-link {
+            margin-right: 20px;
+            font-size: 1.1rem;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            font-size: 1.25rem;
+            text-decoration: underline;
+        }
+    </style>
 </header>
 
 <!-- 主体内容区域 -->
