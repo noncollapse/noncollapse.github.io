@@ -32,18 +32,19 @@ $(document).ready(function () {
         }, 400); // 400ms的滚动动画
       }
 
-    }
-
-    $('.panel-cover').addClass('panel-cover--collapsed');
-    currentWidth = $('.panel-cover').width()
-    if (currentWidth < 960) {
-      $('.panel-cover').addClass('panel-cover--collapsed')
-      $('.content-wrapper').addClass('animated slideInRight')
     } else {
-      $('.panel-cover').css('max-width', currentWidth)
-      $('.panel-cover').animate({'max-width': '530px', 'width': '40%'}, 400, swing = 'swing', function () {})
+
+      $('.panel-cover').addClass('panel-cover--collapsed');
+      currentWidth = $('.panel-cover').width()
+      if (currentWidth < 960) {
+        $('.panel-cover').addClass('panel-cover--collapsed')
+        $('.content-wrapper').addClass('animated slideInRight')
+      } else {
+        $('.panel-cover').css('max-width', currentWidth)
+        $('.panel-cover').animate({'max-width': '530px', 'width': '40%'}, 400, swing = 'swing', function () {})
+      }
+      $('.content-wrapper').addClass('showing');
     }
-    $('.content-wrapper').addClass('showing');
   })
 
   if (window.location.hash && window.location.hash == '#projects') {
