@@ -20,7 +20,7 @@ published:
     repo: DRPO4LLM
     desc: "<strong>Python module</strong> for DRPO4LLM."
 
-  - title: AdaDetectGPT: Adaptive Detection of LLM-Generated Text with Statistical Guarantees
+  - title: "AdaDetectGPT: Adaptive Detection of LLM-Generated Text with Statistical Guarantees"
     journal: "NeurIPS"
     author: "Zhou, H\\*.,Zhu, J\\*,**Ye, K.**, Yang, Y., Akilagun, S. and Shi, C."
     url: https://neurips.cc/virtual/2025/poster/120036
