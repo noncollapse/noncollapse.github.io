@@ -1,11 +1,5 @@
 preprints:
-  - title: Doubly Robust Alignment for Large Language Models
-    author: "Xu, E<sup>*</sup>., <b>Ye, K<sup>*</sup>.</b>, Zhou, H<sup>*</sup>., Zhu, L., Quinzan, F. and Shi, C."
-    url: https://arxiv.org/abs/2506.01183
-    img: '/images/project_figure/DRPO.png'
-    gh_user: DRPO4LLM
-    repo: DRPO4LLM
-    desc: "DRPO4LLM."
+
 
   - title: Robust Reinforcement Learning from Human Feedback for Large Language Models Fine-Tuning
     author: "<b>Ye, K<sup>*</sup>.</b>, Zhou, H<sup>*</sup>., Zhu, J<sup>*</sup>., Quinzan, F. and Shi, C."
@@ -16,6 +10,26 @@ preprints:
     desc: "VRPO."
 
 published:
+  - title: Doubly Robust Alignment for Large Language Models
+    author: "Xu, E<sup>*</sup>., <b>Ye, K<sup>*</sup>.</b>, Zhou, H<sup>*</sup>., Zhu, L., Quinzan, F. and Shi, C."
+    url: https://arxiv.org/abs/2506.01183
+    img: '/images/project_figure/DRPO.png'
+    gh_user: DRPO4LLM
+    repo: DRPO4LLM
+    desc: "DRPO4LLM."
+
+  - title: AdaDetectGPT: Adaptive Detection of LLM-Generated Text with Statistical Guarantees
+    author: "Zhou, H\\*.,Zhu, J\\*,**Ye, K.**, Yang, Y., Akilagun, S. and Shi, C."
+    url: https://neurips.cc/virtual/2025/poster/120036
+    img: '/images/project_figure/AdaDetectGPT.png'
+    gh_user: Mamba413
+    repo: AdaDetectGPT
+    desc: "<strong>Python module</strong> for AdaDetectGPT."
+
+    img: '/images/project_figure/DRPO.png'
+    gh_user: DRPO4LLM
+    repo: DRPO4LLM
+    desc: "DRPO4LLM."
 
 talk:
   - title: "VRPO: Robust Reinforcement Learning from Human Feedback for Large Language Models Fine-Tuning"
@@ -65,4 +79,4 @@ posters:
   #   description: "Poster detailing how human feedback improves fine-tuning LLMs for specific tasks."
   #   url: "https://example.com/llm_finetuning_poster"
 
-published:
+
