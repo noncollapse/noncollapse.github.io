@@ -18,7 +18,7 @@ published:
     repo: DRPO4LLM
     desc: "DRPO4LLM."
 
-  - title: AdaDetectGPT: Adaptive Detection of LLM-Generated Text with Statistical Guarantees
+  - title: "AdaDetectGPT: Adaptive Detection of LLM-Generated Text with Statistical Guarantees"
     author: "Zhou, H\\*.,Zhu, J\\*,**Ye, K.**, Yang, Y., Akilagun, S. and Shi, C."
     url: https://neurips.cc/virtual/2025/poster/120036
     img: '/images/project_figure/AdaDetectGPT.png'
