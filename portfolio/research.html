@@ -44,17 +44,23 @@ robots: "index, follow"
     <!-- 研究模块 -->
     <section id="research" style="margin-bottom: 40px;">
         <!-- 预印本 Preprints -->
-        <h3 style="font-size:1.4rem;font-weight:bold;color:#333;margin:32px 0 12px;">Some preprints</h3>
+        <h3 style="font-size:1.4rem;font-weight:bold;color:#333;margin:32px 0 12px;">Published</h3>
         <ul style="list-style:none;padding:0;line-height:1.6;font-size:1rem;color:#555;">
-        {% for p in site.data.alldetails.preprints %}
+        {% for p in site.data.alldetails.published %}
         <li style="margin-bottom:10px;">
             {{ p.author }} 
             <a href="{{ p.url }}" target="_blank" style="color:#0069c2;text-decoration:none;font-weight:600;">
-            {{ p.title }}
-            </a> Python module 
-            <a href="https://github.com/{{ p.gh_user }}/{{ p.repo }}" target="_blank" style="color:#0069c2;text-decoration:none;">
-            {{ p.desc }}
+                {{ p.title }}
             </a>
+            {% if p.journal %}
+                <span style="font-style: italic;">({{ p.journal }})</span>
+            {% endif %}
+            {% if p.repo %}
+                &nbsp;Python module 
+                <a href="https://github.com/{{ p.gh_user }}/{{ p.repo }}" target="_blank" style="color:#0069c2;text-decoration:none;">
+                    {{ p.repo }}
+                </a>
+            {% endif %}
         </li>
         {% endfor %}
         </ul>
@@ -66,11 +72,17 @@ robots: "index, follow"
         <li style="margin-bottom:10px;">
             {{ p.author }} 
             <a href="{{ p.url }}" target="_blank" style="color:#0069c2;text-decoration:none;font-weight:600;">
-            {{ p.title }}
-            </a> Python module
-            <a href="https://github.com/{{ p.gh_user }}/{{ p.repo }}" target="_blank" style="color:#0069c2;text-decoration:none;">
-            {{ p.repo }}
+                {{ p.title }}
             </a>
+            {% if p.journal %}
+                <span style="font-style: italic;">({{ p.journal }})</span>
+            {% endif %}
+            {% if p.repo %}
+                &nbsp;Python module 
+                <a href="https://github.com/{{ p.gh_user }}/{{ p.repo }}" target="_blank" style="color:#0069c2;text-decoration:none;">
+                    {{ p.repo }}
+                </a>
+            {% endif %}
         </li>
         {% endfor %}
         </ul>
