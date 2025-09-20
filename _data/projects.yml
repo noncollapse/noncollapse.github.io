@@ -4,7 +4,7 @@ preprints:
 
   - title: Robust Reinforcement Learning from Human Feedback for Large Language Models Fine-Tuning
     author: "**Ye, K\\*.**, Zhou, H\\*., Zhu, J\\*., Quinzan, F. and Shi, C."
-    url: https://arxiv.org/abs/2504.03784
+    url: "https://arxiv.org/abs/2504.03784"
     img: '/images/project_figure/VRPO.png'
     gh_user: VRPO
     repo: VRPO
@@ -14,7 +14,7 @@ published:
   - title: Doubly Robust Alignment for Large Language models
     journal: "NeurIPS"
     author: "Xu, E\\*.,**Ye, K\\*.**, Zhou, H\\*.,Zhu, L.,  Quinzan, F. and Shi, C."
-    url: https://arxiv.org/abs/2506.01183
+    url: "https://arxiv.org/abs/2506.01183"
     img: '/images/project_figure/DRPO.png'
     gh_user: DRPO4LLM
     repo: DRPO4LLM
@@ -23,7 +23,7 @@ published:
   - title: "AdaDetectGPT: Adaptive Detection of LLM-Generated Text with Statistical Guarantees"
     journal: "NeurIPS"
     author: "Zhou, H\\*.,Zhu, J\\*,**Ye, K.**, Yang, Y., Akilagun, S. and Shi, C."
-    url: https://neurips.cc/virtual/2025/poster/120036
+    url: "https://neurips.cc/virtual/2025/poster/120036"
     img: '/images/project_figure/AdaDetectGPT.png'
     gh_user: Mamba413
     repo: AdaDetectGPT
