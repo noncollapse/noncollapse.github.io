@@ -12,17 +12,17 @@
           <img src="{{ site.baseurl }}{{ site.profilepic }}" class="user-image" alt="My Profile Photo">
         </a>
 
-        <!-- 名字 + 徽章：名字居中，徽章绝对定位 -->
+        <!-- 名字 + 徽章：名字居中，徽章绝对定位并垂直居中 -->
         <div style="position:relative; margin-top:10px;">
           <h1 class="panel-cover__title panel-title" style="margin:0; text-align:center;">
             {{ site.title }}
-            <!-- 徽章使用绝对定位，不影响名字的居中 -->
+            <!-- 徽章使用绝对定位，垂直居中对齐 -->
             <a href="https://www.credly.com/badges/b62a84be-9e59-4c27-90ce-a00ebdf21c45/public_url" 
                target="_blank" 
-               style="position:absolute; margin-left:8px; display:inline-block;">
+               style="position:absolute; top:50%; transform:translateY(-60%); margin-left:8px; display:inline-block;">
               <img src="/images/badge/aws-academy-educator.png" 
                    alt="AWS Academy Educator Badge" 
-                   style="height:100px; vertical-align:middle;">
+                   style="height:130px;">
             </a>
           </h1>
         </div>
