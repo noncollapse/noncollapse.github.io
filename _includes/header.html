@@ -12,23 +12,19 @@
           <img src="{{ site.baseurl }}{{ site.profilepic }}" class="user-image" alt="My Profile Photo">
         </a>
 
-        <!-- 名字居中，badge绝对定位 - 保持容器全宽 -->
-        <div style="width:100%; margin-top:10px;">
-          <div style="text-align:center !important;">
-            <div style="display:inline-block !important; position:relative !important;">
-              <h1 class="panel-cover__title panel-title" style="margin:0 !important;">
-                {{ site.title }}
-              </h1>
-              <span style="position:absolute !important; top:50% !important; left:100% !important; transform:translateY(-60%) !important; margin-left:15px !important; white-space:nowrap !important;">
-                <a href="https://www.credly.com/badges/b62a84be-9e59-4c27-90ce-a00ebdf21c45/public_url" 
-                   target="_blank">
-                  <img src="/images/badge/aws-academy-educator.png" 
-                       alt="AWS Academy Educator Badge" 
-                       style="height:130px !important; min-height:130px !important; width:auto !important; display:block !important;">
-                </a>
-              </span>
-            </div>
-          </div>
+        <!-- 名字居中，badge绝对定位 - 确保不影响布局宽度 -->
+        <div style="position:relative; width:100%; margin-top:10px;">
+          <h1 class="panel-cover__title panel-title" style="margin:0 !important; text-align:center !important;">
+            {{ site.title }}
+            <span style="position:absolute !important; top:50% !important; transform:translateY(-60%) !important; margin-left:15px !important; white-space:nowrap !important;">
+              <a href="https://www.credly.com/badges/b62a84be-9e59-4c27-90ce-a00ebdf21c45/public_url" 
+                 target="_blank">
+                <img src="/images/badge/aws-academy-educator.png" 
+                     alt="AWS Academy Educator Badge" 
+                     style="height:130px !important; min-height:130px !important; width:auto !important;">
+              </a>
+            </span>
+          </h1>
         </div>
         
         <hr class="panel-cover__divider">
