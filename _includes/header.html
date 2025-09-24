@@ -10,7 +10,15 @@
     <div class="panel-main__content">
         <a href="{{ site.baseurl }}/" title="link to home of {{ site.title }}">
           <img src="{{ site.baseurl }}{{ site.profilepic }}" class="user-image" alt="My Profile Photo">
-          <h1 class="panel-cover__title panel-title">{{ site.title }}</h1>
+          <h1 class="panel-cover__title panel-title">{{ site.title }}
+            <div style="display:inline-block; vertical-align:middle; margin-left:8px;">
+            <div data-iframe-width="150" data-iframe-height="270" 
+                data-share-badge-id="b62a84be-9e59-4c27-90ce-a00ebdf21c45" 
+                data-share-badge-host="https://www.credly.com"></div>
+          </div>
+        </h1>
+        <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
         </a>
         <hr class="panel-cover__divider">
         <p class="panel-cover__description">PhD student in the Department of Statistics at <a href="https://www.lse.ac.uk/statistics/"><u>LSE</u></a>, researching reinforcement learning and alignment <i class="fa-solid fa-brain"></i>.</p>
