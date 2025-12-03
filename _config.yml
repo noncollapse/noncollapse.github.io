@@ -1,0 +1,41 @@
+# Site settings
+title: Kai Ye
+description: 'Machine Learning PhD student at LSE'
+url: 'https://noncollapse.github.io'
+baseurl: ''
+profilepic: '/images/tzuehlke.jpg'
+bkimage: '/images/bk1.jpg'
+robots: "index, follow"
+
+author:
+  name: 'Kai Ye'
+  email: k.ye1@lse.ac.uk
+  github_username: noncollapse
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Sass configuration - point to legacy sass
+sass:
+  sass_dir: legacy/_sass
+  style: compressed
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Exclude files from Jekyll processing
+exclude:
+  - home_page
+  - node_modules
+  - package.json
+  - package-lock.json
+  - README.md
+  - .github
+  - "*.js"
+  - assets
+
+# Include legacy directory
+include:
+  - legacy
