@@ -1,0 +1,123 @@
+---
+layout: default
+robots: "index, follow" 
+---
+<!-- About section -->
+<div id="aboutme" style="padding: 40px 20px; max-width: 800px; margin: 0 auto;">
+  <h2 style="margin: 32px 0 16px;">👤 About Me</h2>
+  <ol style="list-style-type: lower-roman;">
+  <li>
+    I am a PhD student in the <strong>Department of Statistics</strong> at 
+    <a href="https://www.lse.ac.uk" target="_blank">The London School of Economics and Political Science (LSE)</a>, 
+    advised by <strong><a href="https://callmespring.github.io/" target="_blank">Chengchun Shi</a></strong>.
+  </li>
+  <li>
+    Prior to i, I completed an MSc in Applicable Mathematics at LSE.
+  </li>
+  <li>
+    Before ii, I received a BSc in Mathematics with Finance from 
+    <a href="https://www.liverpool.ac.uk" target="_blank">The University of Liverpool</a> and 
+    <a href="https://www.xjtlu.edu.cn/en" target="_blank">Xi'an Jiaotong-Liverpool University</a>.
+  </li>
+  </ol>
+  <ul style="font-size: 16px; line-height: 1.7; padding-left: 20px;">
+    <li><a href="https://www.credly.com/badges/b62a84be-9e59-4c27-90ce-a00ebdf21c45/public_url" target="_blank">AWS Academy Educator</a></li>
+  </ul>
+  <h2 style="margin: 32px 0 16px;">🔬 Research</h2>
+
+  <p style="font-size: 16px; line-height: 1.7;">
+    My current research focuses on the intersection of <strong>reinforcement learning</strong> and 
+    <strong>large language models</strong>, with particular interest in:
+  </p>
+  <ul style="font-size: 16px; line-height: 1.7; padding-left: 20px;">
+    <li><strong>Offline reinforcement learning</strong> and policy optimization</li>
+    <li><strong>Confounded and partially observable environments</strong> (POMDPs)</li>
+    <li><strong>Human feedback alignment</strong> and preference-based learning</li>
+    <li><strong>Double robust estimation</strong> and variance-reduction techniques</li>
+    <li><strong>High-dimensional statistics</strong> and distributional analysis</li>
+  </ul>
+</div>
+
+<!--<div class="main-post-list">-->
+<div id="projects">
+  <ul class="timeline">
+
+    <h2 style="margin: 32px 0 16px;">📝 Selected Preprints</h2>
+    {% for project in site.data.projects.preprints %}
+      <li class="timeline-inverted">
+        <div class="timeline-image">
+          <img class="img-me" src="{{ project.img | prepend: site.baseurl }}" alt="">
+        </div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4>
+              <a href="{{ project.url }}" target="_blank">
+                {{ project.title }}
+              </a>
+            </h4>
+            {% if project.author %}
+              <div class="project-author">{{ project.author | markdownify }}</div>
+            {% endif %}
+          </div>
+          <div class="timeline-body">
+            {% if project.desc %}
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span>{{ project.desc }}</span>
+                {% if project.gh_user and project.repo %}
+                  <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+    </ul>
+    <div style="text-align:center; font-size: 1.2em; color: gray; margin: 8px 0;">
+      Want to know <a href="https://noncollapse.github.io/portfolio/research" class="nav-link">more projects</a>?
+    </div>
+    <ul class="timeline">
+    <h2 style="margin: 32px 0 16px;">📄 Selected Published</h2>
+    {% for project in site.data.projects.published %}
+      <li class="timeline-inverted">
+        <div class="timeline-image">
+          <img class="img-me" src="{{ project.img | prepend: site.baseurl }}" alt="">
+        </div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4>
+              <a href="{{ project.url }}" target="_blank">
+                {{ project.title }}
+              </a>
+              {% if project.journal %}
+                <span style="font-style: italic;">({{ project.journal }})</span>
+              {% endif %}
+            </h4>
+            {% if project.author %}
+              <div class="project-author">{{ project.author | markdownify }}</div>
+            {% endif %}
+          </div>
+          <div class="timeline-body">
+            {% if project.desc %}
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span>{{ project.desc }}</span>
+                {% if project.gh_user and project.repo %}
+                  <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+  <div style="text-align:center; font-size: 1.2em; color: gray; margin: 8px 0;">
+    Want to know <a href="https://noncollapse.github.io/portfolio/research" class="nav-link">more projects</a>?
+  </div>
+</div>
+
+
