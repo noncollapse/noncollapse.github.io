@@ -21,6 +21,15 @@ sass:
   sass_dir: legacy/_sass
   style: compressed
 
+# Data directory
+data_dir: legacy/_data
+
+# Layouts directory
+layouts_dir: legacy/_layouts
+
+# Includes directory
+includes_dir: legacy/_includes
+
 kramdown:
   input: GFM
   hard_wrap: false
