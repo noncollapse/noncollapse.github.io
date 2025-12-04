@@ -64,7 +64,8 @@ const App: React.FC = () => {
                 type: 'system',
                 content: (
                   <div className="mt-4 text-pink-400">
-                    Type <span className="text-white font-bold">'enter'</span> to view commands, or <span className="text-white font-bold">gui</span> to enter legacy Graphical User Interface.
+                    Type <span className="text-white font-bold">'enter'</span> to use the recommended command interface, or <span className="text-white font-bold">'gui'</span> to open the legacy graphical interface (may be outdated).
+
                   </div>
                 )
             }]);
