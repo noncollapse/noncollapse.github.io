@@ -3,6 +3,24 @@
   {% include head.html %}
 
   <body style="margin: 0; padding: 0;">
+    <style>
+      /* 覆盖默认的侧边栏布局样式 */
+      .panel-cover {
+        display: none !important;
+      }
+      .content-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+      }
+      .content-wrapper__inner {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .btn-mobile-menu {
+        display: none !important;
+      }
+    </style>
     {{ content }}
     {% include footer.html %}
   </body>
