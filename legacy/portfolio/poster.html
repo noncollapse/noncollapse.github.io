@@ -88,7 +88,7 @@ robots: "index, follow"
         {% for p in site.data.alldetails.posters %}
         <li>
             <a class="poster-card" href="{{ p.url }}" target="_blank">
-            <img src="{{ p.img | prepend: site.baseurl }}" alt="{{ p.title }}">
+            <img src="{{ p.img }}" alt="{{ p.title }}">
             <div class="poster-info">
                 {{ p.title }}<br>
                 {{ p.event }}
