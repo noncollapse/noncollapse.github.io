@@ -64,7 +64,7 @@ const App: React.FC = () => {
                 type: 'system',
                 content: (
                   <div className="mt-4 text-pink-400">
-                    Type <span className="text-white font-bold">help</span> or <span className="text-white font-bold">'enter'</span> to view commands, or <a href="/legacy/" className="text-pink-300 underline hover:text-pink-100 transition-colors">click here</a> to enter Graphical User Interface.
+                    Type <span className="text-white font-bold">'enter'</span> to view commands, or <span className="text-white font-bold">'enter'</span> to enter legacy Graphical User Interface.
                   </div>
                 )
             }]);
