@@ -5,10 +5,10 @@ import { ExternalLink, FileText, Github, Calendar, MapPin, BookOpen, Video, Mail
 // --- ABOUT SECTION ---
 export const AboutSection: React.FC = () => (
   <div className="p-4 border-l-2 border-pink-700 bg-pink-900/10 mb-4 font-mono text-sm md:text-base">
-    <div className="flex flex-col md:flex-row gap-8 items-start">
-      {/* Profile Photo with Effects */}
-      <div className="shrink-0 select-none hidden sm:block">
-        <div className="relative w-32 h-32 border border-pink-600/50 p-1 bg-pink-900/20 group">
+    <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-start">
+      {/* Profile Photo with Effects - visible on all screens */}
+      <div className="shrink-0 select-none mx-auto md:mx-0">
+        <div className="relative w-24 h-24 sm:w-32 sm:h-32 border border-pink-600/50 p-1 bg-pink-900/20 group">
            <img 
              src="/images/tzuehlke.jpg" 
              alt="Kai Ye"

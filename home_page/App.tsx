@@ -45,6 +45,7 @@ const App: React.FC = () => {
     const bootSteps = [
       "INITIALIZING KERNEL...",
       "WELCOME TO Kai Ye's RESEARCH STATION",
+      "Kai Ye - PhD Student at LSE | LLM and RL Researcher",
       "Connect k.ye1@lse.ac.uk for collaboration inquiries.",
     ];
 
@@ -59,6 +60,12 @@ const App: React.FC = () => {
         }]);
         if (index === bootSteps.length - 1) {
             setBootSequence(false);
+            // Add News line
+            setHistory(prev => [...prev, {
+                id: 'news',
+                type: 'system',
+                content: <div className="text-white">[News] DRPO and AdaDetectGPT have been accepted to NeurIPS 2025!</div>
+            }]);
             setHistory(prev => [...prev, {
                 id: 'init-help',
                 type: 'system',
@@ -203,7 +210,7 @@ const App: React.FC = () => {
           {!bootSequence && (
             <div className="flex items-center mt-2">
               <span className="mr-2 shrink-0 font-bold text-pink-600">
-                Kai_Ye@lab:~$
+                Kai_Ye@LSE&Stats-powered_AI:~$
               </span>
               <div className="relative flex-1">
                 <input
