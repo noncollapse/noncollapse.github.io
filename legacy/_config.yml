@@ -14,8 +14,8 @@ author:
   email: k.ye1@lse.ac.uk
 #  facebook_username: joshgerdes
   github_username:  noncollapse
-  linkedin_username:  ''
-  scholar: ''
+  huggingface_username:  'Kyleyee'
+  scholar: 'https://scholar.google.com/citations?user=a7G8Yo8AAAAJ'
 # Build settings
 destination: _site
 markdown: kramdown

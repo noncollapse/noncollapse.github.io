@@ -58,6 +58,9 @@ export const AboutSection: React.FC = () => (
        <a href="https://huggingface.co/Kyleyee" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 border border-pink-800 px-3 py-1 cursor-pointer hover:bg-pink-900/30 transition-colors">
          <span className="text-lg leading-none">🤗</span> <span>Hugging Face</span>
        </a>
+       <a href="https://scholar.google.com/citations?user=a7G8Yo8AAAAJ" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 border border-pink-800 px-3 py-1 cursor-pointer hover:bg-pink-900/30 transition-colors">
+         <BookOpen size={16} /> <span>Google Scholar</span>
+       </a>
     </div>
   </div>
 );

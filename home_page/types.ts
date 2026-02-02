@@ -46,10 +46,10 @@ export interface TerminalLine {
 }
 
 export const RESEARCH_AREAS = [
-  "Offline reinforcement learning",
-  "Policy optimization",
+  "Reinforcement learning",
+  "Large language models",
   "POMDPs",
-  "RLHF & Preference-based learning",
-  "Double robust estimation",
+  "AIGT",
+  "RLHF & RLVR",
   "High-dimensional statistics"
 ];

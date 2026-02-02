@@ -45,12 +45,12 @@
               </li>
               {% endif %}
 
-              {% if site.author.linkedin_username %}
-              <!-- LinkedIn -->
+              {% if site.author.huggingface_username %}
+              <!-- Hugging Face -->
               <li class="navigation__item">
-                <a href="https://www.linkedin.com/in/{{ site.author.linkedin_username }}" title="{{ site.author.linkedin_username }} on LinkedIn" target="_blank">
-                  <i class="fa-brands fa-linkedin"></i>
-                  <span class="label">LinkedIn</span>
+                <a href="https://huggingface.co/{{ site.author.huggingface_username }}" title="{{ site.author.huggingface_username }} on Hugging Face" target="_blank">
+                  <span style="font-size: 1.2em;">🤗</span>
+                  <span class="label">Hugging Face</span>
                 </a>
               </li>
               {% endif %}
