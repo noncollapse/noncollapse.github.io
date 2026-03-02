@@ -2,3 +2,9 @@ _site/
 .jekyll-cache/
 .htaccess
 .DS_Store
+
+# home_page build artifacts
+home_page/dist/
+home_page/node_modules/
+home_page/public/
+home_page/.env
