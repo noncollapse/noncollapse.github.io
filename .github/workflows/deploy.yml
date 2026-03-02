@@ -27,25 +27,49 @@ jobs:
           ruby-version: '3.1'
           bundler-cache: true
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: home_page/package-lock.json
+
+      - name: Install dependencies and build React app
+        run: |
+          cd home_page
+          npm ci
+          npm run build
+
       - name: Build legacy Jekyll site
         run: |
           cd legacy
           bundle install
           bundle exec jekyll build --destination _site
-          # Move built files to legacy folder in root
-          mkdir -p ../public/legacy
-          cp -r _site/* ../public/legacy/
 
-      - name: Copy static files to public
+      - name: Prepare deployment files
         run: |
-          # Copy the new React app (already built)
-          cp index.html public/ 2>/dev/null || true
-          cp -r assets public/ 2>/dev/null || true
-          # Copy other static files
+          # Create public directory structure
+          mkdir -p public/legacy/_data
+          
+          # Copy React app (from home_page/dist)
+          cp -r home_page/dist/* public/
+          
+          # Copy Jekyll built files to legacy subfolder
+          cp -r legacy/_site/* public/legacy/
+          
+          # Copy data files for React app to access
+          cp legacy/_data/alldetails.yml public/legacy/_data/
+          cp legacy/_data/projects.yml public/legacy/_data/ 2>/dev/null || true
+          
+          # Copy static files
           cp -r images public/ 2>/dev/null || true
           cp -r js public/ 2>/dev/null || true
           cp -r posters public/ 2>/dev/null || true
           cp google82510fd3084d9a7f.html public/ 2>/dev/null || true
+          cp favicon.ico public/ 2>/dev/null || true
+          cp favicon.svg public/ 2>/dev/null || true
+          cp robots.txt public/ 2>/dev/null || true
+          cp sitemap.xml public/ 2>/dev/null || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
