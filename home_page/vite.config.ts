@@ -13,8 +13,8 @@ export default defineConfig(({ mode }) => {
           allow: ['..']
         }
       },
-      // 禁用 publicDir 复制，因为我们是在父目录部署
-      publicDir: false,
+      // 启用 publicDir
+      publicDir: 'public',
       // 构建输出到 dist 目录
       build: {
         outDir: 'dist',

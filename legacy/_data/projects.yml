@@ -11,6 +11,22 @@ preprints:
     desc: "<strong>Python module</strong> for VRPO."
 
 published:
+  - title: "A Difference-in-Difference Approach to Detecting AI-Generated Images"
+    author: "Qi, X<sup>*</sup>., <b>Ye, K<sup>*</sup>.</b>, Shi, C., Yang, Y., Zhou, H. and Zhu, J."
+    journal: "CVPR"
+    url: https://arxiv.org/abs/2602.23732
+    img: '/images/project_figure/DID.png'
+    desc: "DID detection for AI-Generated Images."
+    tags: ["CVPR", "Image Detection", "Difference-in-Difference"]
+
+  - title: "Learn-to-Distance: Distance Learning for Detecting LLM-Generated Text"
+    author: "Zhou, H<sup>*</sup>., Zhu, J<sup>*</sup>., Xu, E., <b>Ye, K.</b>, Yang, Y. and Shi, C."
+    journal: "ICLR"
+    url: https://arxiv.org/abs/2601.21895
+    img: '/images/project_figure/L2D.png'
+    desc: "Learn-to-Distance."
+    tags: ["ICLR", "LLM Detection", "Distance Learning"]
+    
   - title: Doubly Robust Alignment for Large Language models
     journal: "NeurIPS"
     author: "Xu, E\\*.,**Ye, K\\*.**, Zhou, H\\*.,Zhu, L.,  Quinzan, F. and Shi, C."

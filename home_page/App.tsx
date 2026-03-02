@@ -64,7 +64,7 @@ const App: React.FC = () => {
             setHistory(prev => [...prev, {
                 id: 'news',
                 type: 'system',
-                content: <div className="text-white">[News] DRPO and AdaDetectGPT have been accepted to NeurIPS 2025!</div>
+                content: <div className="text-white">[News] 🎠 Images DID have been accepted to CVPR 2026!</div>
             }]);
             setHistory(prev => [...prev, {
                 id: 'init-help',

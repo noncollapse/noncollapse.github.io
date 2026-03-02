@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Paper, Talk, Teaching, RESEARCH_AREAS } from '../types';
 import { ExternalLink, FileText, Github, Calendar, MapPin, BookOpen, Video, Mail } from 'lucide-react';
+import { loadAllDetails, convertToPaper, convertToTalk, convertToTeaching } from '../services/projectsService';
 
 // --- ABOUT SECTION ---
 export const AboutSection: React.FC = () => (
@@ -95,28 +96,29 @@ const PaperItem: React.FC<{ paper: Paper, badgeColor?: string }> = ({ paper, bad
 
 // --- PUBS SECTION ---
 export const PubsSection: React.FC = () => {
-  const papers: Paper[] = [
-    {
-      id: "p1",
-      title: "Doubly Robust Alignment for Large Language Models",
-      authors: ["Xu, E*.", "Ye, K*.", "Zhou, H*.", "Zhu, L.", "Quinzan, F.", "Shi, C."],
-      venue: "NeurIPS",
-      year: "Published",
-      abstract: <>Python module: <a href="https://github.com/DRPO4LLM/DRPO4LLM" target="_blank" className="text-pink-400 underline hover:text-pink-200">DRPO4LLM</a></>,
-      link: "https://arxiv.org/abs/2506.01183",
-      tags: ["NeurIPS", "DRPO", "Double Robust"]
-    },
-    {
-      id: "p2",
-      title: "AdaDetectGPT: Adaptive Detection of LLM-Generated Text with Statistical Guarantees",
-      authors: ["Zhou, H*.", "Zhu, J*", "Ye, K.", "Su, P.", "Yang, Y.", "Akilagun, S.", "Shi, C."],
-      venue: "NeurIPS",
-      year: "Published",
-      abstract: <>Python module: <a href="https://github.com/Mamba413/AdaDetectGPT" target="_blank" className="text-pink-400 underline hover:text-pink-200">AdaDetectGPT</a></>,
-      link: "https://arxiv.org/abs/2510.01268",
-      tags: ["NeurIPS", "AdaDetectGPT", "Statistical Guarantees"]
-    }
-  ];
+  const [papers, setPapers] = useState<Paper[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await loadAllDetails();
+      const publishedPapers = data.published.map((project, index) => {
+        const paperData = convertToPaper(
+          project,
+          `p${index + 1}`,
+          project.journal || "Published",
+          "Published"
+        );
+        return {
+          ...paperData,
+          abstract: paperData.githubLink ? (
+            <>Python module: <a href={paperData.githubLink} target="_blank" className="text-pink-400 underline hover:text-pink-200">{paperData.repoName || 'GitHub'}</a></>
+          ) : undefined
+        };
+      });
+      setPapers(publishedPapers);
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className="mb-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -128,18 +130,29 @@ export const PubsSection: React.FC = () => {
 
 // --- PREPRINTS SECTION ---
 export const PreprintsSection: React.FC = () => {
-    const preprints: Paper[] = [
-        {
-            id: "pp1",
-            title: "Robust Reinforcement Learning from Human Feedback for Large Language Models Fine-Tuning",
-            authors: ["Ye, K*.", "Zhou, H*.", "Zhu, J*.", "Quinzan, F.", "Shi, C."],
-            venue: "Preprint",
-            year: "2024",
-            abstract: <>Python module: <a href="https://github.com/VRPO/VRPO" target="_blank" className="text-pink-400 underline hover:text-pink-200">VRPO</a></>,
-            link: "https://arxiv.org/abs/2504.03784",
-            tags: ["VRPO", "RLHF", "Robust RL"]
-        }
-    ];
+    const [preprints, setPreprints] = useState<Paper[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await loadAllDetails();
+            const preprintPapers = data.preprints.map((project, index) => {
+                const paperData = convertToPaper(
+                    project,
+                    `pp${index + 1}`,
+                    "Preprint",
+                    "2024"
+                );
+                return {
+                    ...paperData,
+                    abstract: paperData.githubLink ? (
+                        <>Python module: <a href={paperData.githubLink} target="_blank" className="text-pink-400 underline hover:text-pink-200">{paperData.repoName || 'GitHub'}</a></>
+                    ) : undefined
+                };
+            });
+            setPreprints(preprintPapers);
+        };
+        fetchData();
+    }, []);
 
     return (
         <div className="mb-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -151,23 +164,18 @@ export const PreprintsSection: React.FC = () => {
 
 // --- TALKS SECTION ---
 export const TalksSection: React.FC = () => {
-    const talks: Talk[] = [
-        {
-            id: "t1",
-            title: "VRPO: Robust Reinforcement Learning from Human Feedback for Large Language Models Fine-Tuning",
-            event: "gouxionghui Online Seminar (Invited)",
-            date: "July 2025",
-            location: "Online",
-            link: "https://www.bilibili.com/video/BV17oMQzyEcC/?spm_id_from=333.1387.homepage.video_card.click"
-        },
-        {
-            id: "t2",
-            title: "VRPO: Robust Reinforcement Learning from Human Feedback for Large Language Models Fine-Tuning",
-            event: "Annual Conference of Chinese Statistical Association of Young Scholars (Invited)",
-            date: "April 2025",
-            location: "China"
-        }
-    ];
+    const [talks, setTalks] = useState<Talk[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await loadAllDetails();
+            const talksList = data.talk.map((talk, index) =>
+                convertToTalk(talk, `t${index + 1}`)
+            );
+            setTalks(talksList);
+        };
+        fetchData();
+    }, []);
 
     return (
         <div className="mb-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -200,24 +208,18 @@ export const TalksSection: React.FC = () => {
 
 // --- TEACHINGS SECTION ---
 export const TeachingsSection: React.FC = () => {
-    const teachings: Teaching[] = [
-        {
-            id: "tc1",
-            courseCode: "ST-446",
-            courseName: "Distributed Computing for Big Data",
-            role: "Teaching Assistant / Educator",
-            semester: "2026",
-            institution: "LSE-Postgraduate Level"
-        }
-        ,{
-            id: "tc2",
-            courseCode: "ST-107",
-            courseName: "	Quantitative Methods (Statistics)",
-            role: "Teaching Assistant / Educator",
-            semester: "2026",
-            institution: "LSE-Undergraduate Level"
-        }
-    ];
+    const [teachings, setTeachings] = useState<Teaching[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await loadAllDetails();
+            const teachingsList = data.teaching.map((teaching, index) =>
+                convertToTeaching(teaching, `tc${index + 1}`)
+            );
+            setTeachings(teachingsList);
+        };
+        fetchData();
+    }, []);
 
     return (
         <div className="mb-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
