@@ -13,11 +13,12 @@ export default defineConfig(({ mode }) => {
           allow: ['..']
         }
       },
-      // 启用 publicDir
-      publicDir: 'public',
+      // 开发环境启用 publicDir，构建时禁用（GitHub Actions 会单独处理）
+      publicDir: mode === 'development' ? 'public' : false,
       // 构建输出到 dist 目录
       build: {
         outDir: 'dist',
+        emptyOutDir: true,
       },
       plugins: [react()],
       define: {
