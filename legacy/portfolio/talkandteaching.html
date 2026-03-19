@@ -52,15 +52,12 @@ robots: "index, follow"
         <h2 style="margin: 48px 0 32px; font-size: 2rem; font-weight: bold; color: #333;">Class</h2>
         {% for item in site.data.alldetails.teaching %}
         <div style="margin-bottom: 30px;">
-        <h4 style="font-size: 1.3rem; font-weight: bold; color: #007acc;">
-            {% if item.link %}
-            <a href="{{ item.link }}" target="_blank" style="color: #007acc; text-decoration: none;">{{ item.title }}</a>
-            {% else %}
-            {{ item.title }}
-            {% endif %}
-        </h4>
-        <p style="color: #555; font-size: 1.1rem;">{{ item.description }}</p>
+        <h4 style="font-size: 1.3rem; font-weight: bold; color: #007acc;">{{ item.courseCode }}: {{ item.courseName }}</h4>
+        <p style="color: #555; font-size: 1.1rem;">{{ item.role }}</p>
+        <p><strong>Institution:</strong> {{ item.institution }}<br><strong>Semester:</strong> {{ item.semester }}</p>
+        {% comment %}
         <p><strong>课程：</strong> {{ item.event }}<br><strong>时间：</strong> {{ item.date }}</p>
+        {% endcomment %}
         </div>
         {% endfor %}
 

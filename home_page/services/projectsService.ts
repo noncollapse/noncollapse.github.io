@@ -6,6 +6,7 @@ export interface ProjectData {
   author: string;
   url: string;
   img?: string;
+  selected?: boolean;
   gh_user?: string;
   repo?: string;
   desc?: string;

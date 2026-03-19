@@ -59,8 +59,6 @@ jobs:
           
           # Copy data files for React app to access
           cp legacy/_data/alldetails.yml public/legacy/_data/
-          cp legacy/_data/projects.yml public/legacy/_data/ 2>/dev/null || true
-          
           # Copy static files
           cp -r images public/ 2>/dev/null || true
           cp -r js public/ 2>/dev/null || true

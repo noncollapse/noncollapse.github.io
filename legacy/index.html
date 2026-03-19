@@ -43,7 +43,8 @@ robots: "index, follow"
   <ul class="timeline">
 
     <h2 style="margin: 32px 0 16px;">📝 Selected Preprints</h2>
-    {% for project in site.data.projects.preprints %}
+    {% assign selected_preprints = site.data.alldetails.preprints | where: "selected", true %}
+    {% for project in selected_preprints %}
       <li class="timeline-inverted">
         <div class="timeline-image">
           <img class="img-me" src="{{ project.img  }}" alt="">
@@ -80,7 +81,8 @@ robots: "index, follow"
     </div>
     <ul class="timeline">
     <h2 style="margin: 32px 0 16px;">📄 Selected Published</h2>
-    {% for project in site.data.projects.published %}
+    {% assign selected_published = site.data.alldetails.published | where: "selected", true %}
+    {% for project in selected_published %}
       <li class="timeline-inverted">
         <div class="timeline-image">
           <img class="img-me" src="{{ project.img  }}" alt="">
