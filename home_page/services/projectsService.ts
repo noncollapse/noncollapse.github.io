@@ -11,6 +11,7 @@ export interface ProjectData {
   repo?: string;
   desc?: string;
   journal?: string;
+  year?: string;
   tags?: string[];
 }
 
@@ -61,7 +62,7 @@ const parseGithubLink = (desc: string | undefined, gh_user?: string, repo?: stri
 };
 
 // 从 YAML 数据转换为 Paper 类型的数据结构
-export const convertToPaper = (project: ProjectData, id: string, venue: string, year: string) => {
+export const convertToPaper = (project: ProjectData, id: string, venue: string, year?: string) => {
   const authors = parseAuthors(project.author);
   const githubLink = parseGithubLink(project.desc, project.gh_user, project.repo);
   
@@ -70,7 +71,7 @@ export const convertToPaper = (project: ProjectData, id: string, venue: string, 
     title: project.title,
     authors,
     venue,
-    year,
+    year: year || project.year || "Preprint",
     githubLink,
     repoName: project.repo,
     link: project.url,

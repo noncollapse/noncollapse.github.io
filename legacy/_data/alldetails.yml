@@ -4,6 +4,7 @@ preprints:
     url: https://arxiv.org/abs/2605.27293
     img: '/images/project_figure/BASIS.png'
     selected: true
+    year: "2026"
     desc: "BASIS."
     tags: ["BASIS", "Advantage Estimation", "LLM Reasoning"]
 
@@ -12,6 +13,7 @@ preprints:
     url: https://arxiv.org/abs/2605.25281
     img: '/images/project_figure/READER.png'
     selected: true
+    year: "2026"
     desc: "READER."
     tags: ["READER", "AI-Generated Text Detection", "Reasoning"]
 
@@ -20,6 +22,7 @@ preprints:
     url: https://arxiv.org/abs/2604.28005
     img: '/images/project_figure/KAE.png'
     selected: true
+    year: "2026"
     desc: "KAE."
     tags: ["KAE", "Advantage Estimation", "LLM Reasoning"]
 
@@ -27,6 +30,7 @@ preprints:
     author: "Zhou, H<sup>*</sup>., <b>Ye, K<sup>*</sup>.</b>, Xu, E., Zhu, J., Gong, S. and Shi, C."
     url: https://arxiv.org/abs/2603.01162
     selected: true
+    year: "2026"
     gh_user: noncollapse
     repo: Demystifying-GRPO
     desc: "Demystifying GRPO"
@@ -37,6 +41,7 @@ preprints:
     url: https://arxiv.org/abs/2504.03784
     img: '/images/project_figure/VRPO.png'
     selected: true
+    year: "2025"
     gh_user: VRPO
     repo: VRPO
     desc: "VRPO."

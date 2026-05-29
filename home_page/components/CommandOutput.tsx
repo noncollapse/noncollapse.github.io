@@ -140,7 +140,7 @@ export const PreprintsSection: React.FC = () => {
                     project,
                     `pp${index + 1}`,
                     "Preprint",
-                    "2024"
+                    project.year
                 );
                 return {
                     ...paperData,
