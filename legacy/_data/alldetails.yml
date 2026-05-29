@@ -1,8 +1,34 @@
 preprints:
+  - title: "BASIS: Batchwise Advantage Estimation from Single-Rollout Information Sharing for LLM Reasoning"
+    author: "Gong, S<sup>*</sup>., Xu, E<sup>*</sup>., <b>Ye, K<sup>*</sup>.</b>, Quinzan, F., Livieri, G. and Shi, C."
+    url: https://arxiv.org/abs/2605.27293
+    img: '/images/project_figure/BASIS.png'
+    selected: true
+    desc: "BASIS."
+    tags: ["BASIS", "Advantage Estimation", "LLM Reasoning"]
+
+  - title: "READER: Reasoning-Enhanced AI-Generated Text Detection"
+    author: "Su, P<sup>*</sup>., <b>Ye, K<sup>*</sup>.</b>, Gong, S., Xu, E., Zhu, J., Livieri, G. and Shi, C."
+    url: https://arxiv.org/abs/2605.25281
+    img: '/images/project_figure/READER.png'
+    selected: true
+    desc: "READER."
+    tags: ["READER", "AI-Generated Text Detection", "Reasoning"]
+
+  - title: "Kernelized Advantage Estimation: From Nonparametric Statistics to LLM Reasoning"
+    author: "Gong, S<sup>*</sup>., <b>Ye, K<sup>*</sup>.</b>, Zhu, J., Zhang, X., Zhou, H. and Shi, C."
+    url: https://arxiv.org/abs/2604.28005
+    img: '/images/project_figure/KAE.png'
+    selected: true
+    desc: "KAE."
+    tags: ["KAE", "Advantage Estimation", "LLM Reasoning"]
+
   - title: "Demystifying Group Relative Policy Optimization: Its Policy Gradient is a U-Statistic"
     author: "Zhou, H<sup>*</sup>., <b>Ye, K<sup>*</sup>.</b>, Xu, E., Zhu, J., Gong, S. and Shi, C."
     url: https://arxiv.org/abs/2603.01162
-    selected: false
+    selected: true
+    gh_user: noncollapse
+    repo: Demystifying-GRPO
     desc: "Demystifying GRPO"
     tags: ["GRPO", "U-Statistic"]
 
@@ -23,6 +49,8 @@ published:
     url: https://arxiv.org/abs/2602.23732
     img: '/images/project_figure/DID.png'
     selected: true
+    gh_user: Qixinyi1122-lucky
+    repo: DID
     desc: "DID detection for AI-Generated Images."
     tags: ["CVPR", "Image Detection", "Difference-in-Difference"]
 
@@ -113,5 +141,3 @@ posters:
   #   date: "2024-06-20"
   #   description: "Poster detailing how human feedback improves fine-tuning LLMs for specific tasks."
   #   url: "https://example.com/llm_finetuning_poster"
-
-
