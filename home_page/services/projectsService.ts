@@ -61,6 +61,19 @@ const parseGithubLink = (desc: string | undefined, gh_user?: string, repo?: stri
   return null;
 };
 
+const resolvePaperYear = (project: ProjectData, year?: string) => {
+  if (year) return year;
+  if (project.year) return project.year;
+
+  const arxivMatch = project.url.match(/arxiv\.org\/(?:abs|pdf)\/(\d{2})(\d{2})\.\d+/i);
+  if (arxivMatch) {
+    const shortYear = Number(arxivMatch[1]);
+    return `${shortYear >= 91 ? 1900 + shortYear : 2000 + shortYear}`;
+  }
+
+  return "Preprint";
+};
+
 // 从 YAML 数据转换为 Paper 类型的数据结构
 export const convertToPaper = (project: ProjectData, id: string, venue: string, year?: string) => {
   const authors = parseAuthors(project.author);
@@ -71,7 +84,7 @@ export const convertToPaper = (project: ProjectData, id: string, venue: string, 
     title: project.title,
     authors,
     venue,
-    year: year || project.year || "Preprint",
+    year: resolvePaperYear(project, year),
     githubLink,
     repoName: project.repo,
     link: project.url,
@@ -106,7 +119,9 @@ export const convertToTeaching = (teaching: TeachingData, id: string) => {
 // 加载并解析 alldetails.yml
 export const loadAllDetails = async (): Promise<AllDetailsYaml> => {
   try {
-    const response = await fetch('/legacy/_data/alldetails.yml');
+    const response = await fetch(`/legacy/_data/alldetails.yml?v=${Date.now()}`, {
+      cache: 'no-store'
+    });
     const yamlText = await response.text();
     const data = yaml.load(yamlText) as AllDetailsYaml;
     
