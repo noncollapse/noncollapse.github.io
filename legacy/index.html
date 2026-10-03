@@ -1,22 +1,31 @@
 ---
 layout: default
-robots: "index, follow" 
+robots: "index, follow"
 ---
+<aside class="homepage-news" aria-label="Latest news">
+  <h2>Latest news</h2>
+  <ul>{% for item in site.data.alldetails.news %}<li><a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.text }}</a></li>{% endfor %}</ul>
+  <a href="{{ site.baseurl }}/portfolio/talkandteaching/">Recent talks &amp; teaching →</a>
+</aside>
 <!-- About section -->
 <div id="aboutme" style="padding: 40px 20px; max-width: 800px; margin: 0 auto;">
   <h2 style="margin: 32px 0 16px;">👤 About Me</h2>
   <ol style="list-style-type: lower-roman;">
   <li>
-    I am a PhD student in the <strong>Department of Statistics</strong> at 
-    <a href="https://www.lse.ac.uk" target="_blank">The London School of Economics and Political Science (LSE)</a>, 
+    I am a PhD student in the <strong>Department of Statistics</strong> at
+    <a href="https://www.lse.ac.uk" target="_blank">The London School of Economics and Political Science (LSE)</a>,
     advised by <strong><a href="https://callmespring.github.io/" target="_blank">Chengchun Shi</a></strong>.
+  </li>
+  <li>
+    I am also the <strong>Chief Technology Officer (CTO)</strong> at
+    <a href="https://www.statspoweredai.com/company/" target="_blank" rel="noopener noreferrer">Stats-Powered AI</a>.
   </li>
   <li>
     Prior to this, I completed an MSc in Applicable Mathematics at LSE.
   </li>
   <li>
-    Before ii, I received a BSc in Mathematics with Finance from 
-    <a href="https://www.liverpool.ac.uk" target="_blank">The University of Liverpool</a> and 
+    Before that, I received a BSc in Mathematics with Finance from
+    <a href="https://www.liverpool.ac.uk" target="_blank">The University of Liverpool</a> and
     <a href="https://www.xjtlu.edu.cn/en" target="_blank">Xi'an Jiaotong-Liverpool University</a>.
   </li>
   </ol>
@@ -26,14 +35,14 @@ robots: "index, follow"
   <h2 style="margin: 32px 0 16px;">🔬 Research</h2>
 
   <p style="font-size: 16px; line-height: 1.7;">
-    My current research focuses on the intersection of <strong>reinforcement learning</strong> and 
+    My current research focuses on the intersection of <strong>reinforcement learning</strong> and
     <strong>large language models</strong>, with particular interest in:
   </p>
   <ul style="font-size: 16px; line-height: 1.7; padding-left: 20px;">
     <li><strong>Reinforcement learning</strong> and policy optimization</li>
     <li><strong>Confounded and partially observable environments</strong> (POMDPs)</li>
     <li><strong>Human feedback alignment</strong> and preference-based learning</li>
-    <li><strong>Double robust estimation</strong> and variance-reduction techniques</li>
+    <li><strong>Doubly robust estimation</strong> and variance-reduction techniques</li>
     <li><strong>High-dimensional statistics</strong> and distributional analysis</li>
   </ul>
 </div>
@@ -47,7 +56,7 @@ robots: "index, follow"
     {% for project in selected_preprints %}
       <li class="timeline-inverted">
         <div class="timeline-image">
-          <img class="img-me" src="{{ project.img  }}" alt="">
+          {% if project.img %}<img class="img-me" src="{{ project.img }}" alt="" loading="lazy">{% else %}<span class="paper-placeholder" aria-hidden="true">{{ project.year }}<br>Research</span>{% endif %}
         </div>
         <div class="timeline-panel">
           <div class="timeline-heading">
@@ -65,8 +74,8 @@ robots: "index, follow"
               <div style="display: flex; align-items: center; gap: 8px;">
                 <span>{{ project.desc }}</span>
                 {% if project.gh_user and project.repo %}
-                  <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
-                    <i class="fa-brands fa-github"></i>
+                  <a target="_blank" rel="noopener noreferrer" aria-label="Code for {{ project.title | escape }}" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
+                    {% include icon.html name='github' %}
                   </a>
                 {% endif %}
               </div>
@@ -77,15 +86,15 @@ robots: "index, follow"
     {% endfor %}
     </ul>
     <div style="text-align:center; font-size: 1.2em; color: gray; margin: 8px 0;">
-      Want to know <a href="https://noncollapse.github.io/legacy/portfolio/research" class="nav-link">more projects</a>?
+      Want to know <a href="{{ site.baseurl }}/portfolio/research/" class="nav-link">more projects</a>?
     </div>
     <ul class="timeline">
-    <h2 style="margin: 32px 0 16px;">📄 Selected Published</h2>
+    <h2 style="margin: 32px 0 16px;">📄 Selected Publications</h2>
     {% assign selected_published = site.data.alldetails.published | where: "selected", true %}
     {% for project in selected_published %}
       <li class="timeline-inverted">
         <div class="timeline-image">
-          <img class="img-me" src="{{ project.img  }}" alt="">
+          {% if project.img %}<img class="img-me" src="{{ project.img }}" alt="" loading="lazy">{% else %}<span class="paper-placeholder" aria-hidden="true">{{ project.year }}<br>Research</span>{% endif %}
         </div>
         <div class="timeline-panel">
           <div class="timeline-heading">
@@ -94,7 +103,7 @@ robots: "index, follow"
                 {{ project.title }}
               </a>
               {% if project.journal %}
-                <span style="font-style: italic;">({{ project.journal }})</span>
+                <span style="font-style: italic;">({{ project.journal }} {{ project.year }}{% if project.status %} · {{ project.status }}{% endif %})</span>
               {% endif %}
             </h4>
             {% if project.author %}
@@ -106,8 +115,8 @@ robots: "index, follow"
               <div style="display: flex; align-items: center; gap: 8px;">
                 <span>{{ project.desc }}</span>
                 {% if project.gh_user and project.repo %}
-                  <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
-                    <i class="fa-brands fa-github"></i>
+                  <a target="_blank" rel="noopener noreferrer" aria-label="Code for {{ project.title | escape }}" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
+                    {% include icon.html name='github' %}
                   </a>
                 {% endif %}
               </div>
@@ -118,8 +127,6 @@ robots: "index, follow"
     {% endfor %}
   </ul>
   <div style="text-align:center; font-size: 1.2em; color: gray; margin: 8px 0;">
-    Want to know <a href="https://noncollapse.github.io/legacy/portfolio/research" class="nav-link">more projects</a>?
+    Want to know <a href="{{ site.baseurl }}/portfolio/research/" class="nav-link">more projects</a>?
   </div>
 </div>
-
-

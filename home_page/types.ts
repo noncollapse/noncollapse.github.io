@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 export enum MessageRole {
   USER = 'user',
   MODEL = 'model',
@@ -15,8 +17,9 @@ export interface Paper {
   title: string;
   authors: string[];
   venue: string;
+  status?: string;
   year: string | number;
-  abstract?: string | React.ReactNode;
+  abstract?: string | ReactNode;
   link?: string;
   tags?: string[];
 }
@@ -32,17 +35,18 @@ export interface Talk {
 
 export interface Teaching {
   id: string;
-  courseCode: string;
+  courseCode?: string;
   courseName: string;
   role: string;
   semester: string;
   institution: string;
+  level: string;
 }
 
 export interface TerminalLine {
   id: string;
   type: 'input' | 'output' | 'system' | 'component';
-  content: string | React.ReactNode;
+  content: string | ReactNode;
 }
 
 export const RESEARCH_AREAS = [

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Paper, Talk, Teaching, RESEARCH_AREAS } from '../types';
+import React from 'react';
+import { Paper, RESEARCH_AREAS } from '../types';
 import { ExternalLink, FileText, Github, Calendar, MapPin, BookOpen, Video, Mail } from 'lucide-react';
-import { loadAllDetails, convertToPaper, convertToTalk, convertToTeaching } from '../services/projectsService';
+import { allDetails, convertToPaper } from '../services/projectsService';
 
 // --- ABOUT SECTION ---
 export const AboutSection: React.FC = () => (
@@ -23,16 +23,19 @@ export const AboutSection: React.FC = () => (
 
       <div className="flex-1">
         <h2 className="text-xl font-bold mb-2 text-pink-300">USER: Kai Ye (PhD Student)</h2>
-        <p className="mb-2">Institution: <a href="https://www.lse.ac.uk" target="_blank" className="text-pink-400 hover:text-pink-200 underline">The London School of Economics (LSE)</a></p>
+        <p className="mb-2">Institution: <a href="https://www.lse.ac.uk" target="_blank" rel="noopener noreferrer" className="text-pink-400 hover:text-pink-200 underline">The London School of Economics (LSE)</a></p>
         <div className="mb-4 text-gray-300 leading-relaxed">
           <p className="mb-2">
-            I am a PhD student in the Department of Statistics at <a href="https://www.lse.ac.uk" target="_blank" className="text-pink-200 hover:text-pink-100 underline">The London School of Economics and Political Science (LSE)</a>, advised by <a href="https://callmespring.github.io/" target="_blank" className="text-pink-200 hover:text-pink-100 underline">Chengchun Shi</a>.
+            I am a PhD student in the Department of Statistics at <a href="https://www.lse.ac.uk" target="_blank" rel="noopener noreferrer" className="text-pink-200 hover:text-pink-100 underline">The London School of Economics and Political Science (LSE)</a>, advised by <a href="https://callmespring.github.io/" target="_blank" rel="noopener noreferrer" className="text-pink-200 hover:text-pink-100 underline">Chengchun Shi</a>.
           </p>
           <p className="mb-2">
-            Prior to this, I completed an MSc in Applicable Mathematics at LSE. Before that, I received a BSc in Mathematics with Finance from <a href="https://www.liverpool.ac.uk" target="_blank" className="text-pink-200 hover:text-pink-100 underline">The University of Liverpool</a> and <a href="https://www.xjtlu.edu.cn/en" target="_blank" className="text-pink-200 hover:text-pink-100 underline">Xi'an Jiaotong-Liverpool University</a>.
+            I am also the Chief Technology Officer (CTO) at <a href="https://www.statspoweredai.com/company/" target="_blank" rel="noopener noreferrer" className="text-pink-200 hover:text-pink-100 underline">Stats-Powered AI</a>.
+          </p>
+          <p className="mb-2">
+            Prior to this, I completed an MSc in Applicable Mathematics at LSE. Before that, I received a BSc in Mathematics with Finance from <a href="https://www.liverpool.ac.uk" target="_blank" rel="noopener noreferrer" className="text-pink-200 hover:text-pink-100 underline">The University of Liverpool</a> and <a href="https://www.xjtlu.edu.cn/en" target="_blank" rel="noopener noreferrer" className="text-pink-200 hover:text-pink-100 underline">Xi'an Jiaotong-Liverpool University</a>.
           </p>
           <p className="mt-3">
-             <span className="text-pink-500 font-bold">{"> ROLE:"}</span> <a href="https://www.credly.com/badges/b62a84be-9e59-4c27-90ce-a00ebdf21c45/public_url" target="_blank" className="text-pink-200 hover:text-pink-100 underline">AWS Academy Educator</a>
+             <span className="text-pink-500 font-bold">{"> ROLE:"}</span> <a href="https://www.credly.com/badges/b62a84be-9e59-4c27-90ce-a00ebdf21c45/public_url" target="_blank" rel="noopener noreferrer" className="text-pink-200 hover:text-pink-100 underline">AWS Academy Educator</a>
           </p>
         </div>
         
@@ -66,201 +69,108 @@ export const AboutSection: React.FC = () => (
   </div>
 );
 
-// --- HELPER FOR PAPERS ---
-const PaperItem: React.FC<{ paper: Paper, badgeColor?: string }> = ({ paper, badgeColor = "pink" }) => (
-    <div className={`border border-dashed border-${badgeColor}-800 p-4 hover:bg-${badgeColor}-900/10 transition-colors group mb-4`}>
-        <div className="flex flex-col md:flex-row justify-between items-start gap-2">
-            <h3 className={`text-lg font-bold text-${badgeColor}-300 group-hover:text-${badgeColor}-200`}>{paper.title}</h3>
-            <span className={`text-xs bg-${badgeColor}-900 text-${badgeColor}-300 px-2 py-0.5 whitespace-nowrap`}>{paper.venue} • {paper.year}</span>
-        </div>
-        <p className="text-sm text-gray-400 mb-2 mt-1">{paper.authors.join(", ")}</p>
-        {paper.abstract && (
-            <div className="text-sm text-gray-300 mb-3 leading-relaxed border-l-2 border-pink-900/50 pl-2 mt-2">
-                {paper.abstract}
-            </div>
-        )}
-        <div className="flex justify-between items-center mt-2">
-            <div className="flex gap-2 flex-wrap">
-                {paper.tags?.map(tag => (
-                    <span key={tag} className={`text-xs text-${badgeColor}-500 font-bold opacity-70`}>#{tag}</span>
-                ))}
-            </div>
-            {paper.link && (
-                <a href={paper.link} className={`flex items-center text-xs border border-${badgeColor}-600 px-2 py-1 hover:bg-${badgeColor}-600 hover:text-black transition-all shrink-0 ml-2`}>
-                    <FileText size={12} className="mr-1" /> VIEW
-                </a>
-            )}
-        </div>
-    </div>
+// All sections use the same bundled YAML source as the graphical site.
+export const NewsSection: React.FC = () => (
+  <div className="space-y-2">
+    {allDetails.news.map(item => <p key={item.url}><span className="text-pink-400">[News]</span> <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-gray-200 underline underline-offset-4 hover:text-pink-200">{item.text}</a></p>)}
+  </div>
 );
 
-// --- PUBS SECTION ---
-export const PubsSection: React.FC = () => {
-  const [papers, setPapers] = useState<Paper[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await loadAllDetails();
-      const publishedPapers = data.published.map((project, index) => {
-        const paperData = convertToPaper(
-          project,
-          `p${index + 1}`,
-          project.journal || "Published",
-          "Published"
-        );
-        return {
-          ...paperData,
-          abstract: paperData.githubLink ? (
-            <>Python module: <a href={paperData.githubLink} target="_blank" className="text-pink-400 underline hover:text-pink-200">{paperData.repoName || 'GitHub'}</a></>
-          ) : undefined
-        };
-      });
-      setPapers(publishedPapers);
-    };
-    fetchData();
-  }, []);
-
-  return (
-    <div className="mb-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <h3 className="text-pink-500 mb-4 border-b border-pink-900 pb-1">{">>"} SELECTED_PUBLICATIONS</h3>
-      {papers.map((paper) => <PaperItem key={paper.id} paper={paper} />)}
+const PaperItem: React.FC<{ paper: Paper; githubLink?: string }> = ({ paper, githubLink }) => (
+  <article className="border border-dashed border-pink-800 p-4 hover:bg-pink-900/10 transition-colors mb-4">
+    <div className="flex flex-col gap-2">
+      <div className="flex flex-wrap items-center gap-2 text-xs text-pink-200">
+        <span className="bg-pink-950 px-2 py-1">{paper.venue} · {paper.year}</span>
+        {paper.status && <span>{paper.status}</span>}
+      </div>
+      <h3 className="text-lg font-bold text-pink-200 leading-snug">{paper.title}</h3>
     </div>
-  );
-};
+    <p className="text-sm text-gray-300 mt-3">{paper.authors.join(', ')}</p>
+    <div className="flex flex-wrap gap-3 mt-3 text-xs text-pink-300">
+      {paper.tags?.map(tag => <span key={tag}>#{tag}</span>)}
+    </div>
+    <div className="flex flex-wrap gap-4 mt-4 text-sm">
+      <a href={paper.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-pink-200 underline underline-offset-4"><FileText size={14} aria-hidden="true" />Read paper</a>
+      {githubLink && <a href={githubLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-pink-200 underline underline-offset-4"><Github size={14} aria-hidden="true" />Code</a>}
+    </div>
+  </article>
+);
 
-// --- PREPRINTS SECTION ---
-export const PreprintsSection: React.FC = () => {
-    const [preprints, setPreprints] = useState<Paper[]>([]);
+export const PubsSection: React.FC = () => (
+  <section className="mb-4">
+    <h2 className="text-pink-400 mb-2 border-b border-pink-900 pb-2">{">>"} PUBLICATIONS</h2>
+    <p className="text-gray-400 text-xs mb-4">* Equal contribution.</p>
+    {allDetails.published.map((project, index) => {
+      const paper = convertToPaper(project, `p${index}`, project.journal || 'Published');
+      return <PaperItem key={paper.id} paper={paper} githubLink={paper.githubLink} />;
+    })}
+  </section>
+);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = await loadAllDetails();
-            const preprintPapers = data.preprints.map((project, index) => {
-                const paperData = convertToPaper(
-                    project,
-                    `pp${index + 1}`,
-                    "Preprint",
-                    project.year
-                );
-                return {
-                    ...paperData,
-                    abstract: paperData.githubLink ? (
-                        <>Python module: <a href={paperData.githubLink} target="_blank" className="text-pink-400 underline hover:text-pink-200">{paperData.repoName || 'GitHub'}</a></>
-                    ) : undefined
-                };
-            });
-            setPreprints(preprintPapers);
-        };
-        fetchData();
-    }, []);
+export const PreprintsSection: React.FC = () => (
+  <section className="mb-4">
+    <h2 className="text-pink-400 mb-2 border-b border-pink-900 pb-2">{">>"} PREPRINTS</h2>
+    <p className="text-gray-400 text-xs mb-4">* Equal contribution.</p>
+    {allDetails.preprints.map((project, index) => {
+      const paper = convertToPaper(project, `pp${index}`, 'Preprint');
+      return <PaperItem key={paper.id} paper={paper} githubLink={paper.githubLink} />;
+    })}
+  </section>
+);
 
-    return (
-        <div className="mb-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
-             <h3 className="text-pink-500 mb-4 border-b border-pink-900 pb-1">{">>"} PREPRINTS &amp; WORK_IN_PROGRESS</h3>
-             {preprints.map((paper) => <PaperItem key={paper.id} paper={paper} badgeColor="pink" />)}
-        </div>
-    );
-};
+export const TalksSection: React.FC = () => (
+  <section className="mb-4">
+    <h2 className="text-pink-400 mb-4 border-b border-pink-900 pb-2">{">>"} TALKS_AND_PRESENTATIONS</h2>
+    <div className="space-y-4">
+      {allDetails.talk.map(talk => (
+        <article key={talk.title + talk.date} className="border-l-2 border-pink-800 pl-4 py-2">
+          <div className="flex flex-wrap gap-3 items-center text-xs text-pink-300 mb-2">
+            <time dateTime={talk.datetime} className="flex gap-2 items-center"><Calendar size={12} aria-hidden="true" />{talk.date}</time>
+            {talk.type && <span className="bg-pink-950 px-2 py-1">{talk.type}</span>}
+          </div>
+          <h3 className="text-pink-200 font-bold">{talk.title}</h3>
+          <p className="text-gray-300 text-sm mt-2">{talk.event}</p>
+          <p className="flex items-start gap-2 text-gray-400 text-sm mt-1"><MapPin size={14} className="shrink-0 mt-1" aria-hidden="true" />{talk.location}</p>
+          {talk.description && <p className="text-gray-300 text-sm mt-3">{talk.description}</p>}
+          <div className="flex flex-wrap gap-4 mt-3 text-sm">
+            {talk.link && <a href={talk.link} target="_blank" rel="noopener noreferrer" aria-label={`Watch recording: ${talk.title}`} className="inline-flex items-center gap-2 text-pink-200 underline underline-offset-4"><Video size={14} aria-hidden="true" />Watch recording</a>}
+            {talk.eventLink && <a href={talk.eventLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-pink-200 underline underline-offset-4"><ExternalLink size={14} aria-hidden="true" />Conference details</a>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+);
 
-// --- TALKS SECTION ---
-export const TalksSection: React.FC = () => {
-    const [talks, setTalks] = useState<Talk[]>([]);
+export const TeachingsSection: React.FC = () => (
+  <section className="mb-4">
+    <h2 className="text-pink-400 mb-4 border-b border-pink-900 pb-2">{">>"} TEACHING</h2>
+    <div className="space-y-3">
+      {allDetails.teaching.map(teaching => (
+        <article key={teaching.courseName} className="bg-pink-950/20 p-4 border border-pink-900/50">
+          <div className="flex flex-wrap gap-2 justify-between text-xs text-pink-300 mb-3"><span>{teaching.role}</span><span>{teaching.semester} · {teaching.level}</span></div>
+          <h3 className="font-bold text-pink-200">{teaching.courseCode && <span className="block text-sm mb-1">{teaching.courseCode}</span>}{teaching.courseName}</h3>
+          <p className="text-sm text-gray-300 mt-2">{teaching.institution}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = await loadAllDetails();
-            const talksList = data.talk.map((talk, index) =>
-                convertToTalk(talk, `t${index + 1}`)
-            );
-            setTalks(talksList);
-        };
-        fetchData();
-    }, []);
-
-    return (
-        <div className="mb-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h3 className="text-pink-500 mb-4 border-b border-pink-900 pb-1">{">>"} TALKS_AND_PRESENTATIONS</h3>
-            <div className="space-y-3">
-                {talks.map(talk => (
-                    <div key={talk.id} className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 p-3 border-l border-pink-800 hover:bg-pink-900/20 hover:border-pink-500 transition-all">
-                        <div className="w-24 text-xs font-bold text-pink-600 flex items-center shrink-0">
-                            <Calendar size={12} className="mr-2" />
-                            {talk.date}
-                        </div>
-                        <div className="flex-1">
-                            <h4 className="text-pink-200 font-bold">{talk.title}</h4>
-                            <div className="flex items-center text-gray-400 text-sm mt-1">
-                                <span className="mr-3">{talk.event}</span>
-                                <span className="flex items-center text-xs text-gray-500"><MapPin size={10} className="mr-1"/> {talk.location}</span>
-                            </div>
-                        </div>
-                        {talk.link && (
-                            <a href={talk.link} className="text-pink-500 hover:text-white transition-colors">
-                                <Video size={16} />
-                            </a>
-                        )}
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
-};
-
-// --- TEACHINGS SECTION ---
-export const TeachingsSection: React.FC = () => {
-    const [teachings, setTeachings] = useState<Teaching[]>([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = await loadAllDetails();
-            const teachingsList = data.teaching.map((teaching, index) =>
-                convertToTeaching(teaching, `tc${index + 1}`)
-            );
-            setTeachings(teachingsList);
-        };
-        fetchData();
-    }, []);
-
-    return (
-        <div className="mb-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
-             <h3 className="text-pink-500 mb-4 border-b border-pink-900 pb-1">{">>"} ACADEMIC_TEACHING</h3>
-             <div className="grid grid-cols-1 gap-3">
-                 {teachings.map(t => (
-                     <div key={t.id} className="bg-pink-950/20 p-3 border border-pink-900/50 flex items-center justify-between group hover:border-pink-600 transition-colors">
-                         <div className="flex items-start gap-3">
-                             <div className="bg-pink-900/30 p-2 rounded text-pink-400 group-hover:text-pink-200 transition-colors">
-                                 <BookOpen size={18} />
-                             </div>
-                             <div>
-                                 <div className="font-bold text-pink-200">{t.courseCode}: {t.courseName}</div>
-                                 <div className="text-sm text-gray-400">{t.role} • {t.institution}</div>
-                             </div>
-                         </div>
-                         <div className="text-xs font-mono text-pink-700 font-bold">
-                             {t.semester}
-                         </div>
-                     </div>
-                 ))}
-             </div>
-        </div>
-    );
-};
-
-// --- HELP SECTION ---
 export const HelpSection: React.FC = () => (
-  <div className="mb-4 text-sm animate-in fade-in duration-300">
+  <div className="mb-4 text-sm">
     <p className="mb-2 text-pink-300">AVAILABLE COMMANDS:</p>
-    <table className="w-full md:w-3/4 text-left border-collapse">
-      <tbody>
-        <tr className="border-b border-pink-900/30 hover:bg-pink-900/10"><td className="py-1 w-24 text-pink-500 font-bold">about</td><td className="text-gray-300">Bio, research interests, and contact.</td></tr>
-        <tr className="border-b border-pink-900/30 hover:bg-pink-900/10"><td className="py-1 w-24 text-pink-500 font-bold">pubs</td><td className="text-gray-300">Conference and journal publications.</td></tr>
-        <tr className="border-b border-pink-900/30 hover:bg-pink-900/10"><td className="py-1 w-24 text-pink-500 font-bold">preprints</td><td className="text-gray-300">Recent ArXiv papers and drafts.</td></tr>
-        <tr className="border-b border-pink-900/30 hover:bg-pink-900/10"><td className="py-1 w-24 text-pink-500 font-bold">talks</td><td className="text-gray-300">Invited talks and presentations.</td></tr>
-        <tr className="border-b border-pink-900/30 hover:bg-pink-900/10"><td className="py-1 w-24 text-pink-500 font-bold">teachings</td><td className="text-gray-300">Teaching assistant roles and courses.</td></tr>
-        <tr className="border-b border-pink-900/30 hover:bg-pink-900/10"><td className="py-1 w-24 text-pink-500 font-bold">gui</td><td className="text-gray-300">Switch to Graphical User Interface.</td></tr>
-        <tr className="border-b border-pink-900/30 hover:bg-pink-900/10"><td className="py-1 w-24 text-pink-500 font-bold">clear</td><td className="text-gray-300">Clear terminal buffer.</td></tr>
-        <tr className="border-b border-pink-900/30 hover:bg-pink-900/10"><td className="py-1 w-24 text-pink-500 font-bold">help</td><td className="text-gray-300">Display this help menu.</td></tr>
-      </tbody>
-    </table>
+    <dl className="grid grid-cols-[6rem_minmax(0,1fr)] gap-x-4 gap-y-2 text-gray-300">
+      {[
+        ['about', 'Bio, research interests, and contact.'],
+        ['pubs', 'Conference and journal publications.'],
+        ['preprints', 'Recent preprints.'],
+        ['talks', 'Invited talks and presentations.'],
+        ['teaching', 'Courses and teaching roles.'],
+        ['gui', 'Open the graphical homepage.'],
+        ['clear', 'Clear the terminal.'],
+        ['help', 'Display this help menu.'],
+      ].map(([command, description]) => <React.Fragment key={command}><dt className="text-pink-400 font-bold">{command}</dt><dd>{description}</dd></React.Fragment>)}
+    </dl>
   </div>
 );

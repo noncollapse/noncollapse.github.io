@@ -1,7 +1,4 @@
-<span class="mobile btn-mobile-menu">
-  <i class="fas fa-bars btn-mobile-menu__icon"></i>
-  <i class="far fa-times-circle btn-mobile-close__icon hidden"></i>
-</span>
+<button type="button" class="mobile btn-mobile-menu" aria-controls="profile-navigation" aria-expanded="false">Menu</button>
 
 <header class="panel-cover" style="background-image: url({{ site.bkimage }})">
   <div class="panel-main">
@@ -12,34 +9,26 @@
           <img src="{{ site.profilepic }}" class="user-image" alt="My Profile Photo">
         </a>
 
-        <!-- 名字居中，badge绝对定位 - 确保不影响布局宽度 -->
-        <div style="position:relative; width:100%; margin-top:10px;">
-          <h1 class="panel-cover__title panel-title" style="margin:0 !important; text-align:center !important;">
-            {{ site.title }}
-            <span style="position:absolute !important; top:50% !important; transform:translateY(-60%) !important; margin-left:25px !important; white-space:nowrap !important;">
-              <a href="https://www.credly.com/badges/b62a84be-9e59-4c27-90ce-a00ebdf21c45/public_url" 
-                 target="_blank">
-                <img src="/images/badge/aws-academy-educator.png" 
-                     alt="AWS Academy Educator Badge" 
-                     style="height:130px !important; min-height:130px !important; width:auto !important;">
-              </a>
-            </span>
-          </h1>
+        <div class="profile-heading">
+          <h1 class="panel-cover__title panel-title">{{ site.title }}</h1>
+          <a class="educator-badge" href="https://www.credly.com/badges/b62a84be-9e59-4c27-90ce-a00ebdf21c45/public_url" target="_blank" rel="noopener noreferrer">
+            <img src="/images/badge/aws-academy-educator.png" alt="AWS Academy Educator Badge">
+          </a>
         </div>
-        
+
         <hr class="panel-cover__divider">
-        <p class="panel-cover__description">PhD student in the Department of Statistics at <a href="https://www.lse.ac.uk/statistics/"><u>LSE</u></a>, researching reinforcement learning and alignment <i class="fa-solid fa-brain"></i>.</p>
+        <p class="panel-cover__description">PhD student in the Department of Statistics at <a href="https://www.lse.ac.uk/statistics/"><u>LSE</u></a>, researching reinforcement learning and alignment. CTO at <a href="https://www.statspoweredai.com/company/" target="_blank" rel="noopener noreferrer"><u>Stats-Powered AI</u></a>.</p>
 
         <hr class="panel-cover__divider panel-cover__divider--secondary">
 
-        <div class="navigation-wrapper">
-          <nav class="cover-navigation navigation--social">
+        <div class="navigation-wrapper" id="profile-navigation">
+          <nav class="cover-navigation navigation--social" aria-label="Contact and profiles">
             <ul class="navigation">
               {% if site.author.github_username %}
               <!-- GitHub -->
               <li class="navigation__item">
-                <a href="https://www.github.com/{{ site.author.github_username }}" title="{{ site.author.github_username }} on GitHub" target="_blank">
-                  <i class="fa-brands fa-github"></i>
+                <a href="https://www.github.com/{{ site.author.github_username }}" title="{{ site.author.github_username }} on GitHub" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                  {% include icon.html name='github' %}
                   <span class="label">GitHub</span>
                 </a>
               </li>
@@ -48,8 +37,8 @@
               {% if site.author.huggingface_username %}
               <!-- Hugging Face -->
               <li class="navigation__item">
-                <a href="https://huggingface.co/{{ site.author.huggingface_username }}" title="{{ site.author.huggingface_username }} on Hugging Face" target="_blank">
-                  <span style="font-size: 1.2em;">🤗</span>
+                <a href="https://huggingface.co/{{ site.author.huggingface_username }}" title="{{ site.author.huggingface_username }} on Hugging Face" aria-label="Hugging Face" target="_blank" rel="noopener noreferrer">
+                  <span class="social-emoji" aria-hidden="true">🤗</span>
                   <span class="label">Hugging Face</span>
                 </a>
               </li>
@@ -58,8 +47,8 @@
               {% if site.author.scholar %}
               <!-- Google Scholar -->
               <li class="navigation__item">
-                <a href="{{ site.author.scholar }}" title="Google Scholar" target="_blank">
-                  <i class="fa-brands fa-google-scholar"></i>
+                <a href="{{ site.author.scholar }}" title="Google Scholar" aria-label="Google Scholar" target="_blank" rel="noopener noreferrer">
+                  {% include icon.html name='scholar' %}
                   <span class="label">Scholar</span>
                 </a>
               </li>
@@ -68,8 +57,8 @@
               {% if site.author.email %}
               <!-- Email -->
               <li class="navigation__item">
-                <a href="mailto:{{ site.author.email }}" title="Email {{ site.author.email }}" target="_blank">
-                  <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:{{ site.author.email }}" title="Email {{ site.author.email }}" aria-label="Email">
+                  {% include icon.html name='mail' %}
                   <span class="label">Email</span>
                 </a>
               </li>
@@ -77,21 +66,21 @@
             </ul>
           </nav>
           
-          <nav class="cover-navigation navigation--social">
+          <nav class="cover-navigation navigation--primary" aria-label="Main navigation">
             <ul class="navigation">
               <li class="navigation__item">
                 <a href="{{ site.baseurl }}/#aboutme" title="About Section" class="panel-button about-button">
-                  <i class="fa-solid fa-user"></i>&nbsp;About
+                  About
                 </a>
               </li>
               <li class="navigation__item">
                 <a href="{{ site.baseurl }}/#projects" title="List of Projects" class="panel-button projects-button">
-                  <i class="fa-solid fa-file-code"></i>&nbsp;Projects
+                  Projects
                 </a>
               </li>
               <li class="navigation__item">
-                <a href="/legacy/portfolio/research/" title="Portfolio" class="panel-button talks-posters-button">
-                  <i class="fa-solid fa-images"></i>&nbsp;Portfolio
+                <a href="{{ site.baseurl }}/portfolio/research/" title="Portfolio">
+                  Portfolio
                 </a>
               </li>
             </ul>

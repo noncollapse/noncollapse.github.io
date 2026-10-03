@@ -1,10 +1,10 @@
 ---
-layout: page
+layout: default
 title: Projects
 permalink: /projects/
-robots: "index, follow" 
+robots: "index, follow"
 ---
-<body class="panel-cover--collapsed">
+
     <div id="projects">
         <ul class="timeline">
 
@@ -13,7 +13,7 @@ robots: "index, follow"
             {% for project in selected_preprints %}
             <li class="timeline-inverted">
                 <div class="timeline-image">
-                <img class="img-me" src="{{ project.img  }}" alt="">
+                {% if project.img %}<img class="img-me" src="{{ project.img }}" alt="" loading="lazy">{% else %}<span class="paper-placeholder" aria-hidden="true">{{ project.year }}<br>Research</span>{% endif %}
                 </div>
                 <div class="timeline-panel">
                 <div class="timeline-heading">
@@ -31,8 +31,8 @@ robots: "index, follow"
                     <div style="display: flex; align-items: center; gap: 8px;">
                         <span>{{ project.desc }}</span>
                         {% if project.gh_user and project.repo %}
-                        <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
-                            <i class="fa-brands fa-github"></i>
+                        <a target="_blank" rel="noopener noreferrer" aria-label="Code for {{ project.title | escape }}" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
+                            {% include icon.html name='github' %}
                         </a>
                         {% endif %}
                     </div>
@@ -47,12 +47,12 @@ robots: "index, follow"
             </div>
             </li>
 
-            <h2 style="margin-left: 20px;">📄 Selected Published</h2>
+            <h2 style="margin-left: 20px;">📄 Selected Publications</h2>
             {% assign selected_published = site.data.alldetails.published | where: "selected", true %}
             {% for project in selected_published %}
             <li class="timeline-inverted">
                 <div class="timeline-image">
-                <img class="img-me" src="{{ project.img  }}" alt="">
+                {% if project.img %}<img class="img-me" src="{{ project.img }}" alt="" loading="lazy">{% else %}<span class="paper-placeholder" aria-hidden="true">{{ project.year }}<br>Research</span>{% endif %}
                 </div>
                 <div class="timeline-panel">
                 <div class="timeline-heading">
@@ -61,7 +61,7 @@ robots: "index, follow"
                         {{ project.title }}
                     </a>
                     {% if project.journal %}
-                    <span style="font-style: italic;">({{ project.journal }})</span>
+                    <span style="font-style: italic;">({{ project.journal }} {{ project.year }}{% if project.status %} · {{ project.status }}{% endif %})</span>
                     {% endif %}
                     </h4>
                     {% if project.author %}
@@ -73,8 +73,8 @@ robots: "index, follow"
                     <div style="display: flex; align-items: center; gap: 8px;">
                         <span>{{ project.desc }}</span>
                         {% if project.gh_user and project.repo %}
-                        <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
-                            <i class="fa-brands fa-github"></i>
+                        <a target="_blank" rel="noopener noreferrer" aria-label="Code for {{ project.title | escape }}" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">
+                            {% include icon.html name='github' %}
                         </a>
                         {% endif %}
                     </div>
@@ -91,4 +91,3 @@ robots: "index, follow"
 
         </ul>
     </div>
-</body>

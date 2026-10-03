@@ -1,4 +1,5 @@
 import yaml from 'js-yaml';
+import detailsSource from '../../legacy/_data/alldetails.yml?raw';
 
 // 定义数据结构
 export interface ProjectData {
@@ -11,6 +12,7 @@ export interface ProjectData {
   repo?: string;
   desc?: string;
   journal?: string;
+  status?: string;
   year?: string;
   tags?: string[];
 }
@@ -21,17 +23,23 @@ export interface TalkData {
   date: string;
   location: string;
   link?: string;
+  datetime?: string;
+  type?: string;
+  description?: string;
+  eventLink?: string;
 }
 
 export interface TeachingData {
-  courseCode: string;
+  courseCode?: string;
   courseName: string;
   role: string;
   semester: string;
   institution: string;
+  level: string;
 }
 
 export interface AllDetailsYaml {
+  news: { text: string; url: string }[];
   preprints: ProjectData[];
   published: ProjectData[];
   talk: TalkData[];
@@ -44,7 +52,7 @@ const parseAuthors = (authorString: string): string[] => {
     .replace(/<\/?b>/g, '') // 移除 <b> 标签
     .replace(/<sup>\*<\/sup>/g, '*') // 转换上标星号
     .replace(/<sup>([^<]*)<\/sup>/g, '$1') // 移除其他上标
-    .split(',')
+    .split(/,\s*(?=[A-Z][A-Za-z-]+,)/)
     .map(a => a.trim())
     .filter(a => a.length > 0);
 };
@@ -84,6 +92,7 @@ export const convertToPaper = (project: ProjectData, id: string, venue: string, 
     title: project.title,
     authors,
     venue,
+    status: project.status,
     year: resolvePaperYear(project, year),
     githubLink,
     repoName: project.repo,
@@ -95,6 +104,7 @@ export const convertToPaper = (project: ProjectData, id: string, venue: string, 
 // 从 YAML 数据转换为 Talk 类型
 export const convertToTalk = (talk: TalkData, id: string) => {
   return {
+    ...talk,
     id,
     title: talk.title,
     event: talk.event,
@@ -107,6 +117,7 @@ export const convertToTalk = (talk: TalkData, id: string) => {
 // 从 YAML 数据转换为 Teaching 类型
 export const convertToTeaching = (teaching: TeachingData, id: string) => {
   return {
+    ...teaching,
     id,
     courseCode: teaching.courseCode,
     courseName: teaching.courseName,
@@ -116,18 +127,7 @@ export const convertToTeaching = (teaching: TeachingData, id: string) => {
   };
 };
 
-// 加载并解析 alldetails.yml
-export const loadAllDetails = async (): Promise<AllDetailsYaml> => {
-  try {
-    const response = await fetch(`/legacy/_data/alldetails.yml?v=${Date.now()}`, {
-      cache: 'no-store'
-    });
-    const yamlText = await response.text();
-    const data = yaml.load(yamlText) as AllDetailsYaml;
-    
-    return data;
-  } catch (error) {
-    console.error('Error loading alldetails.yml:', error);
-    return { preprints: [], published: [], talk: [], teaching: [] };
-  }
-};
+// Bundle the same source Jekyll reads, so every section also works without a
+// separate YAML request or a development-only copy of the data.
+export const allDetails = yaml.load(detailsSource) as AllDetailsYaml;
+export const loadAllDetails = async (): Promise<AllDetailsYaml> => allDetails;

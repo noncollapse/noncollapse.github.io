@@ -26,6 +26,7 @@ jobs:
         with:
           ruby-version: '3.1'
           bundler-cache: true
+          working-directory: legacy
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -38,6 +39,7 @@ jobs:
         run: |
           cd home_page
           npm ci
+          npm run check
           npm run build
 
       - name: Build legacy Jekyll site

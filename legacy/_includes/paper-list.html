@@ -1,0 +1,15 @@
+<ol class="paper-list">
+  {% for paper in include.papers %}
+  <li class="paper-entry">
+    <h3><a href="{{ paper.url }}" target="_blank" rel="noopener noreferrer">{{ paper.title }}</a></h3>
+    <p class="paper-authors">{{ paper.author }}</p>
+    <p class="paper-meta">
+      <span class="paper-venue">{{ paper.journal | default: 'Preprint' }} {{ paper.year }}</span>{% if paper.status %}<span> · {{ paper.status }}</span>{% endif %}
+      <span class="entry-links">
+        <a href="{{ paper.url }}" target="_blank" rel="noopener noreferrer" aria-label="Read paper: {{ paper.title | escape }}">[Paper]</a>
+        {% if paper.gh_user and paper.repo %}<a href="https://github.com/{{ paper.gh_user }}/{{ paper.repo }}" target="_blank" rel="noopener noreferrer" aria-label="Code for {{ paper.title | escape }}">[Code]</a>{% endif %}
+      </span>
+    </p>
+  </li>
+  {% endfor %}
+</ol>

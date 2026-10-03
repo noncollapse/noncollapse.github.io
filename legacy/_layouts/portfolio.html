@@ -1,27 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   {% include head.html %}
-
-  <body style="margin: 0; padding: 0;">
-    <style>
-      /* 覆盖默认的侧边栏布局样式 */
-      .panel-cover {
-        display: none !important;
-      }
-      .content-wrapper {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin-left: 0 !important;
-      }
-      .content-wrapper__inner {
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-      .btn-mobile-menu {
-        display: none !important;
-      }
-    </style>
-    {{ content }}
-    {% include footer.html %}
+  <body class="portfolio-page">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="portfolio-header">
+      <a class="portfolio-brand" href="{{ site.baseurl }}/">Kai Ye<span>Statistics · LSE</span></a>
+      <nav class="portfolio-nav" aria-label="Main navigation">
+        <a href="{{ site.baseurl }}/">Home</a>
+        <a href="{{ site.baseurl }}/portfolio/research/" {% if page.title == 'Publications' %}aria-current="page"{% endif %}>Publications</a>
+        <a href="{{ site.baseurl }}/portfolio/talkandteaching/" {% if page.title == 'Talks & Teaching' %}aria-current="page"{% endif %}>Talks &amp; Teaching</a>
+        <a href="{{ site.baseurl }}/portfolio/posters/" {% if page.title == 'Posters' %}aria-current="page"{% endif %}>Posters</a>
+        <a href="/" class="terminal-link">Terminal ↗</a>
+      </nav>
+    </header>
+    <main id="main-content" class="portfolio-main">
+      {{ content }}
+    </main>
+    <footer class="portfolio-footer">
+      <span>&copy; {{ site.time | date: '%Y' }} Kai Ye</span>
+      <a href="mailto:k.ye1@lse.ac.uk">k.ye1@lse.ac.uk</a>
+    </footer>
   </body>
 </html>

@@ -1,12 +1,28 @@
-preprints:
-  - title: "BASIS: Batchwise Advantage Estimation from Single-Rollout Information Sharing for LLM Reasoning"
-    author: "Gong, S<sup>*</sup>., Xu, E<sup>*</sup>., <b>Ye, K<sup>*</sup>.</b>, Quinzan, F., Livieri, G. and Shi, C."
+# Shared by the terminal and graphical sites. Last checked: 3 October 2026.
+# New papers: https://scholar.google.com/citations?user=a7G8Yo8AAAAJ
+# Metadata checked against each linked paper. Acceptance supplied by Kai Ye.
+news:
+  - text: "BASIS has been accepted to EMNLP (Findings) 2026."
     url: https://arxiv.org/abs/2605.27293
-    img: '/images/project_figure/BASIS.png'
+  - text: "New preprint: Can Tabular Foundation Models Amortize Statistical Inference?"
+    url: https://arxiv.org/abs/2609.33114
+
+preprints:
+  - title: "Can Tabular Foundation Models Amortize Statistical Inference?"
+    author: "<b>Ye, K.</b>, Gong, S., Zhou, H., Zangirolami, V. and Shi, C."
+    url: https://arxiv.org/abs/2609.33114
     selected: true
     year: "2026"
-    desc: "BASIS."
-    tags: ["BASIS", "Advantage Estimation", "LLM Reasoning"]
+    desc: "TabCon: amortized confidence intervals with tabular foundation models."
+    tags: ["TabCon", "Foundation Models", "Statistical Inference"]
+
+  - title: "Detecting LLM-Generated Tokens in Human–LLM Coauthored Text"
+    author: "Lu, Y., Zhou, H., Spill, F., <b>Ye, K.</b>, Shi, C. and Zhu, J."
+    url: https://arxiv.org/abs/2607.21458
+    selected: true
+    year: "2026"
+    desc: "Token-level detection in text coauthored by humans and LLMs."
+    tags: ["AI-Generated Text Detection", "Human–AI Collaboration"]
 
   - title: "READER: Reasoning-Enhanced AI-Generated Text Detection"
     author: "Su, P<sup>*</sup>., <b>Ye, K<sup>*</sup>.</b>, Gong, S., Xu, E., Zhu, J., Livieri, G. and Shi, C."
@@ -27,7 +43,7 @@ preprints:
     tags: ["KAE", "Advantage Estimation", "LLM Reasoning"]
 
   - title: "Demystifying Group Relative Policy Optimization: Its Policy Gradient is a U-Statistic"
-    author: "Zhou, H<sup>*</sup>., <b>Ye, K<sup>*</sup>.</b>, Xu, E., Zhu, J., Gong, S. and Shi, C."
+    author: "Zhou, H<sup>*</sup>., <b>Ye, K<sup>*</sup>.</b>, Xu, E., Zhu, J., Yang, Y., Gong, S. and Shi, C."
     url: https://arxiv.org/abs/2603.01162
     selected: true
     year: "2026"
@@ -48,10 +64,22 @@ preprints:
     tags: ["VRPO", "RLHF", "Robust RL"]
 
 published:
+  - title: "BASIS: Batchwise Advantage Estimation from Single-Rollout Information Sharing for LLM Reasoning"
+    author: "Gong, S<sup>*</sup>., Xu, E<sup>*</sup>., <b>Ye, K<sup>*</sup>.</b>, Livieri, G., Quinzan, F. and Shi, C."
+    journal: "EMNLP (Findings)"
+    year: "2026"
+    status: Accepted
+    url: https://arxiv.org/abs/2605.27293
+    img: '/images/project_figure/BASIS.png'
+    selected: true
+    desc: "BASIS: single-rollout information sharing for LLM reasoning."
+    tags: ["BASIS", "RLVR", "LLM Reasoning"]
+
   - title: "A Difference-in-Difference Approach to Detecting AI-Generated Images"
-    author: "Qi, X<sup>*</sup>., <b>Ye, K<sup>*</sup>.</b>, Shi, C., Yang, Y., Zhou, H. and Zhu, J."
+    author: "Qi, X<sup>*</sup>., <b>Ye, K<sup>*</sup>.</b>, Shi, C., Yang, Y., Zhu, J. and Zhou, H."
     journal: "CVPR"
-    url: https://arxiv.org/abs/2602.23732
+    year: "2026"
+    url: https://openaccess.thecvf.com/content/CVPR2026/html/Qi_A_Difference-in-Difference_Approach_to_Detecting_AI-Generated_Images_CVPR_2026_paper.html
     img: '/images/project_figure/DID.png'
     selected: true
     gh_user: Qixinyi1122-lucky
@@ -62,6 +90,7 @@ published:
   - title: "Learn-to-Distance: Distance Learning for Detecting LLM-Generated Text"
     author: "Zhou, H<sup>*</sup>., Zhu, J<sup>*</sup>., Xu, E., <b>Ye, K.</b>, Yang, Y. and Shi, C."
     journal: "ICLR"
+    year: "2026"
     url: https://arxiv.org/abs/2601.21895
     img: '/images/project_figure/L2D.png'
     selected: true
@@ -71,6 +100,7 @@ published:
   - title: Doubly Robust Alignment for Large Language Models
     author: "Xu, E<sup>*</sup>., <b>Ye, K<sup>*</sup>.</b>, Zhou, H<sup>*</sup>., Zhu, L., Quinzan, F. and Shi, C."
     journal: "NeurIPS"
+    year: "2025"
     url: https://arxiv.org/abs/2506.01183
     img: '/images/project_figure/DRPO.png'
     selected: true
@@ -80,8 +110,9 @@ published:
     tags: ["NeurIPS", "DRPO", "Double Robust"]
 
   - title: "AdaDetectGPT: Adaptive Detection of LLM-Generated Text with Statistical Guarantees"
-    author: "Zhou, H<sup>*</sup>.,Zhu, J<sup>*</sup>,<b>Ye, K.</b>, Su, P., Yang, Y., Akilagun, S. and Shi, C."
+    author: "Zhou, H<sup>*</sup>., Zhu, J<sup>*</sup>., Su, P., <b>Ye, K.</b>, Yang, Y., Gavioli-Akilagun, S. and Shi, C."
     journal: "NeurIPS"
+    year: "2025"
     url: https://neurips.cc/virtual/2025/poster/120036
     img: '/images/project_figure/AdaDetectGPT.png'
     selected: true
@@ -91,32 +122,52 @@ published:
     tags: ["NeurIPS", "AdaDetectGPT", "Statistical Guarantees"]
 
 talk:
-  - title: "VRPO: Robust Reinforcement Learning from Human Feedback for Large Language Models Fine-Tuning"
-    event: gouxionghui Online Seminar(Invited)
-    date: July 2025
+  # The video description dates the live seminar to 22 August; uploaded in September.
+  - title: "BASIS: Information Sharing for Single-Rollout LLM Reasoning"
+    event: "Gouxionghui Online Seminar"
+    date: "22 August 2026"
+    datetime: "2026-08-22"
     location: Online
-    link: https://www.bilibili.com/video/BV17oMQzyEcC/?spm_id_from=333.1387.homepage.video_card.click
+    link: https://www.bilibili.com/video/BV1Juey6yEHG/
+  - title: "Large Language Models (LLMs): Principles and Training Methods"
+    event: "4th Conference on Machine Learning and Statistics (MLSTAT 2026)"
+    date: "15–17 July 2026"
+    datetime: "2026-07"
+    location: "Southwestern University of Finance and Economics, Chengdu, China"
+    type: Invited talk
+    eventLink: https://csr.swufe.edu.cn/info/1431/10281.htm
   - title: "VRPO: Robust Reinforcement Learning from Human Feedback for Large Language Models Fine-Tuning"
-    event: Annual Conference of Chinese Statistical Association of Young Scholars(Invited)
+    event: Gouxionghui Online Seminar
+    date: July 2025
+    datetime: "2025-07"
+    location: Online
+    type: Invited talk
+    link: https://www.bilibili.com/video/BV17oMQzyEcC/
+  - title: "VRPO: Robust Reinforcement Learning from Human Feedback for Large Language Models Fine-Tuning"
+    event: Annual Conference of the Chinese Statistical Association of Young Scholars
     date: April 2025
+    datetime: "2025-04"
     location: China
+    type: Invited talk
 
 teaching:
-  - courseCode: University of Warwick
-    courseName: Large Language Models (LLM) - Comprehensive Principles and Training Guide
+  - courseName: "Large Language Models (LLMs): Comprehensive Principles and Training Guide"
     role: Guest Lecturer
     semester: "2026"
-    institution: Doctoral Level
-  - courseCode: LSE ST-446
+    institution: University of Warwick
+    level: Doctoral
+  - courseCode: ST446
     courseName: Distributed Computing for Big Data
     role: Teaching Assistant / Educator
     semester: "2026"
-    institution: Postgraduate Level
-  - courseCode: LSE ST-107
+    institution: London School of Economics and Political Science
+    level: Postgraduate
+  - courseCode: ST107
     courseName: Quantitative Methods (Statistics)
     role: Teaching Assistant / Educator
     semester: "2026"
-    institution: Undergraduate Level 
+    institution: London School of Economics and Political Science
+    level: Undergraduate
   # - type: class
   #   title: Machine Learning Fundamentals
   #   description: "A comprehensive course on the basics of machine learning, including supervised and unsupervised learning."

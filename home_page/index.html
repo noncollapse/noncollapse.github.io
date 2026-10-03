@@ -14,10 +14,10 @@
     <meta name="msapplication-config" content="/images/favicons/browserconfig.xml" />
     <meta name="theme-color" content="#050505" />
     
-    <title>Kai Ye | PhD Student at LSE | LLM and Reinforcement Learning Researcher</title>
+    <title>Kai Ye | PhD Student at LSE | CTO at Stats-Powered AI</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Kai Ye is a PhD student in Statistics at The London School of Economics (LSE), researching reinforcement learning, large language models, and RLHF alignment." />
+    <meta name="description" content="Kai Ye is a Statistics PhD student at LSE and Chief Technology Officer (CTO) at Stats-Powered AI, researching reinforcement learning, large language models, and alignment." />
     <meta name="keywords" content="Kai Ye, LSE, PhD, Statistics, Reinforcement Learning, LLM, Large Language Models, RLHF, NeurIPS, Machine Learning, AI Research" />
     <meta name="author" content="Kai Ye" />
     <meta name="robots" content="index, follow" />
@@ -26,15 +26,16 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://noncollapse.github.io/" />
-    <meta property="og:title" content="Kai Ye | PhD Student at LSE | LLM and RL Researcher" />
-    <meta property="og:description" content="PhD student researching reinforcement learning, large language models, and RLHF alignment at The London School of Economics." />
-    <meta property="og:image" content="https://noncollapse.github.io/images/og-image.jpg" />
+    <meta property="og:title" content="Kai Ye | PhD Student at LSE | CTO at Stats-Powered AI" />
+    <meta property="og:description" content="Statistics PhD student at LSE and Chief Technology Officer (CTO) at Stats-Powered AI, researching reinforcement learning and large language models." />
+    <meta property="og:image" content="https://noncollapse.github.io/images/tzuehlke.jpg" />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://noncollapse.github.io/images/tzuehlke.jpg" />
     <meta name="twitter:url" content="https://noncollapse.github.io/" />
-    <meta name="twitter:title" content="Kai Ye | PhD Student at LSE | LLM and RL Researcher" />
-    <meta name="twitter:description" content="PhD student researching reinforcement learning, large language models, and RLHF alignment at The London School of Economics." />
+    <meta name="twitter:title" content="Kai Ye | PhD Student at LSE | CTO at Stats-Powered AI" />
+    <meta name="twitter:description" content="Statistics PhD student at LSE and Chief Technology Officer (CTO) at Stats-Powered AI, researching reinforcement learning and large language models." />
     
     <!-- Google Site Verification -->
     <meta name="google-site-verification" content="google82510fd3084d9a7f" />
@@ -51,8 +52,13 @@
       "@type": "Person",
       "name": "Kai Ye",
       "url": "https://noncollapse.github.io",
-      "jobTitle": "PhD Student",
+      "jobTitle": ["PhD Student", "Chief Technology Officer"],
       "worksFor": {
+        "@type": "Organization",
+        "name": "Stats-Powered AI",
+        "url": "https://www.statspoweredai.com/company/"
+      },
+      "affiliation": {
         "@type": "Organization",
         "name": "The London School of Economics and Political Science"
       },
@@ -136,6 +142,10 @@
         100% { background-position: 0% 100%; }
       }
 
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; }
+      }
+      a:focus-visible, button:focus-visible { outline: 2px solid #f9a8d4; outline-offset: 3px; }
       .cursor-blink {
         animation: blink 1s step-end infinite;
       }
@@ -155,10 +165,11 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+
 </head>
   <body>
     <div id="root"></div>
+    <noscript><p>This site has a terminal interface. <a href="/legacy/portfolio/research/">Visit the graphical publications page</a> to browse publications, talks, and teaching without JavaScript.</p></noscript>
   <script type="module" src="/index.tsx"></script>
 </body>
 </html>

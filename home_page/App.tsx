@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TerminalLine } from './types';
-import { 
-  AboutSection, 
-  PubsSection, 
-  PreprintsSection, 
-  TalksSection, 
+import {
+  AboutSection,
+  PubsSection,
+  PreprintsSection,
+  TalksSection,
   TeachingsSection,
-  HelpSection 
+  HelpSection,
+  NewsSection
 } from './components/CommandOutput';
-import { Terminal as TerminalIcon, Battery, Wifi, Cpu, X, Minus, Square } from 'lucide-react';
+import { Terminal as TerminalIcon, Battery, Wifi, Cpu } from 'lucide-react';
 
 const App: React.FC = () => {
   const [history, setHistory] = useState<TerminalLine[]>([]);
@@ -16,43 +17,35 @@ const App: React.FC = () => {
   const [bootSequence, setBootSequence] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const bootInitialized = useRef(false);
 
-  // Auto-scroll to bottom
+  // Open long results at their heading, so the newest items are visible first.
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      const latest = history[history.length - 1];
+      const result = scrollRef.current.lastElementChild?.previousElementSibling;
+      if (latest?.type === 'component' && result instanceof HTMLElement) {
+        scrollRef.current.scrollTop = result.offsetTop - scrollRef.current.offsetTop;
+      } else {
+        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      }
     }
   }, [history, bootSequence]);
 
-  // Focus input on click
-  useEffect(() => {
-    const handleGlobalClick = () => {
-        if (!window.getSelection()?.toString()) {
-             inputRef.current?.focus();
-        }
-    };
-    document.addEventListener('click', handleGlobalClick);
-    return () => document.removeEventListener('click', handleGlobalClick);
-  }, []);
-
   // Boot sequence effect
   useEffect(() => {
-    // Prevent double execution in React StrictMode
-    if (bootInitialized.current) return;
-    bootInitialized.current = true;
+    const timers: ReturnType<typeof setTimeout>[] = [];
 
     const bootSteps = [
       "INITIALIZING KERNEL...",
       "WELCOME TO Kai Ye's RESEARCH STATION",
-      "Kai Ye - PhD Student at LSE | LLM and RL Researcher",
-      "Connect k.ye1@lse.ac.uk for collaboration inquiries.",
+      "Kai Ye - PhD Student at LSE | CTO at Stats-Powered AI",
+      "Contact k.ye1@lse.ac.uk for collaboration inquiries.",
     ];
 
     let delay = 0;
     bootSteps.forEach((step, index) => {
       delay += Math.random() * 500 + 300;
-      setTimeout(() => {
+      timers.push(setTimeout(() => {
         setHistory(prev => [...prev, {
           id: `boot-${index}`,
           type: 'system',
@@ -64,21 +57,22 @@ const App: React.FC = () => {
             setHistory(prev => [...prev, {
                 id: 'news',
                 type: 'system',
-                content: <div className="text-white">[News] 🎠 Images DID have been accepted to CVPR 2026!</div>
+                content: <NewsSection />
             }]);
             setHistory(prev => [...prev, {
                 id: 'init-help',
                 type: 'system',
                 content: (
                   <div className="mt-4 text-pink-400">
-                    Type <span className="text-white font-bold">help</span> or use <span className="text-white font-bold">'Enter'</span> to get recommended command help, or type <span className="text-white font-bold">gui</span> to open the legacy graphical interface (may be outdated).
+                    Type <span className="text-white font-bold">help</span> or use <span className="text-white font-bold">'Enter'</span> to get recommended command help, or type <span className="text-white font-bold">gui</span> to open the graphical homepage.
 
                   </div>
                 )
             }]);
         }
-      }, delay);
+      }, delay));
     });
+    return () => timers.forEach(clearTimeout);
   }, []);
 
   const handleCommand = async (cmd: string) => {
@@ -117,24 +111,24 @@ const App: React.FC = () => {
         break;
       case 'gui':
       case 'graphical user interface':
-        setHistory(prev => [...prev, { 
-          id: `sys-${Date.now()}`, 
-          type: 'system', 
-          content: <span className="text-pink-400 animate-pulse">{">>"} INITIATING GUI SUBSYSTEM... REDIRECTING...</span> 
+        setHistory(prev => [...prev, {
+          id: `sys-${Date.now()}`,
+          type: 'system',
+          content: <span className="text-pink-400 animate-pulse">{">>"} INITIATING GUI SUBSYSTEM... REDIRECTING...</span>
         }]);
         setTimeout(() => {
             window.location.href = '/legacy/';
         }, 1200);
         break;
       case 'clear':
-        // Keep boot messages and init-help, clear everything else
-        setHistory(prev => prev.filter(line => line.id.startsWith('boot-') || line.id === 'init-help'));
+        // Keep the welcome, news, and command hint
+        setHistory(prev => prev.filter(line => line.id.startsWith('boot-') || line.id === 'init-help' || line.id === 'news'));
         break;
       default:
-        setHistory(prev => [...prev, { 
-          id: `err-${Date.now()}`, 
-          type: 'system', 
-          content: <span className="text-red-500">Command not found: {cleanCmd}. Type 'help' for available commands.</span> 
+        setHistory(prev => [...prev, {
+          id: `err-${Date.now()}`,
+          type: 'system',
+          content: <span className="text-red-500">Command not found: {cleanCmd}. Type 'help' for available commands.</span>
         }]);
     }
   };
@@ -146,45 +140,49 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-screen bg-black flex items-center justify-center p-2 md:p-8 relative">
+    <div className="w-full h-[100dvh] bg-black flex items-center justify-center p-2 md:p-8 relative">
       {/* Background Visuals */}
       <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-pink-900/10 via-black to-black pointer-events-none"></div>
-      <div className="fixed inset-0 opacity-10 pointer-events-none" 
+      <div className="fixed inset-0 opacity-10 pointer-events-none"
            style={{ backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(255, 105, 180, .3) 25%, rgba(255, 105, 180, .3) 26%, transparent 27%, transparent 74%, rgba(255, 105, 180, .3) 75%, rgba(255, 105, 180, .3) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 105, 180, .3) 25%, rgba(255, 105, 180, .3) 26%, transparent 27%, transparent 74%, rgba(255, 105, 180, .3) 75%, rgba(255, 105, 180, .3) 76%, transparent 77%, transparent)', backgroundSize: '50px 50px' }}>
       </div>
-      
+
       {/* CRT Overlays */}
       <div className="crt-scanline"></div>
       <div className="crt-flicker"></div>
 
       {/* Main Terminal Window */}
-      <div className="w-full max-w-5xl h-[calc(100vh-2rem)] sm:h-[calc(100vh-3rem)] md:h-[calc(100vh-4rem)] max-h-[800px] bg-[#0c0c0c] border border-pink-800 shadow-[0_0_20px_rgba(255,105,180,0.15)] flex flex-col relative z-40 rounded-lg overflow-hidden mx-2 sm:mx-4">
-        
+      <div className="w-full max-w-5xl h-[calc(100dvh-2rem)] sm:h-[calc(100dvh-3rem)] md:h-[calc(100dvh-4rem)] max-h-[800px] bg-[#0c0c0c] border border-pink-800 shadow-[0_0_20px_rgba(255,105,180,0.15)] flex flex-col relative z-40 rounded-lg overflow-hidden mx-2 sm:mx-4">
+
         {/* Title Bar */}
         <div className="bg-[#1a1a1a] border-b border-pink-900 px-4 py-2 flex justify-between items-center select-none">
           <div className="flex items-center space-x-2 text-pink-600">
             <TerminalIcon size={16} />
-            <span className="font-bold text-sm">Kai_Ye@research-station:~</span>
+            <span className="font-bold text-xs sm:text-sm">Kai_Ye@research-station:~</span>
           </div>
           <div className="flex items-center space-x-4">
-             <div className="flex space-x-2 text-gray-500">
+             <div className="hidden sm:flex space-x-2 text-gray-500">
                 <Wifi size={14} />
                 <Battery size={14} />
                 <Cpu size={14} />
              </div>
-             <div className="flex space-x-2">
-                <div className="w-3 h-3 rounded-full bg-yellow-600/50 hover:bg-yellow-500 cursor-pointer flex items-center justify-center"><Minus size={8} className="text-black"/></div>
-                <div className="w-3 h-3 rounded-full bg-pink-600/50 hover:bg-pink-500 cursor-pointer flex items-center justify-center"><Square size={8} className="text-black"/></div>
-                <div className="w-3 h-3 rounded-full bg-red-600/50 hover:bg-red-500 cursor-pointer flex items-center justify-center"><X size={8} className="text-black"/></div>
-             </div>
+             <a href="/legacy/" className="text-xs text-pink-300 underline underline-offset-4">GUI ↗</a>
           </div>
         </div>
 
+        <nav aria-label="Terminal commands" className="flex flex-wrap gap-1 px-3 py-2 border-b border-pink-900/50">
+          {['about', 'pubs', 'preprints', 'talks', 'teaching', 'help'].map(command => (
+            <button key={command} disabled={bootSequence} onClick={() => handleCommand(command)} className="px-2 py-1 text-xs text-pink-300 hover:bg-pink-900/30 disabled:opacity-40">{command}</button>
+          ))}
+        </nav>
+
         {/* Terminal Content Area */}
-        <div 
+        <div
           ref={scrollRef}
           className="flex-1 p-4 overflow-y-auto font-mono text-pink-400 text-sm md:text-base leading-relaxed"
-          onClick={() => inputRef.current?.focus()}
+          onClick={event => {
+            if (!(event.target as HTMLElement).closest('a, button, input') && !window.getSelection()?.toString()) inputRef.current?.focus();
+          }}
         >
           {history.map((line) => (
             <div key={line.id} className="mb-2 break-words">
@@ -210,38 +208,32 @@ const App: React.FC = () => {
           {!bootSequence && (
             <div className="flex items-center mt-2">
               <span className="mr-2 shrink-0 font-bold text-pink-600">
-                Kai_Ye@LSE&Stats-powered_AI:~$
+                Kai_Ye@lab:~$
               </span>
-              <div className="relative flex-1">
+              <div className="relative flex-1 min-w-0">
                 <input
                   ref={inputRef}
                   type="text"
+                  aria-label="Terminal command"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  className="w-full bg-transparent border-none outline-none text-white font-mono glow-text caret-transparent"
+                  className="w-full bg-transparent border-none outline-none text-white font-mono glow-text caret-pink-400"
                   autoFocus
                   autoComplete="off"
                   spellCheck={false}
                 />
-                {/* Custom Blinking Cursor positioned at the end of text */}
-                <span 
-                    className="absolute top-0 pointer-events-none text-white bg-pink-500/80 w-[10px] h-[1.2em] cursor-blink"
-                    style={{ 
-                        left: `${input.length}ch`,
-                        display: 'inline-block' 
-                    }}
-                ></span>
+
               </div>
             </div>
           )}
         </div>
-        
+
         {/* Footer Status Bar */}
-        <div className="bg-[#111] border-t border-pink-900 px-4 py-1 text-xs text-gray-500 flex justify-between font-mono select-none">
+        <div className="bg-[#111] border-t border-pink-900 px-4 py-1 text-xs text-gray-500 flex flex-wrap gap-x-4 gap-y-1 justify-between font-mono select-none">
            <span>Address: Room 5.02 Columbia House, 69 Aldwych, London WC2B 4RR</span>
-           <span>STATUS: Dandan De Youshang</span>
-           <span className="hidden md:inline">VERSION: 1.5.0</span>
+           <a href="mailto:k.ye1@lse.ac.uk" className="text-pink-300">k.ye1@lse.ac.uk</a>
+           <span className="hidden md:inline">UPDATED: OCT 2026</span>
         </div>
       </div>
     </div>

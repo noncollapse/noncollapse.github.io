@@ -1,69 +1,53 @@
 ---
-title: "Teaching and Talk"
+layout: portfolio
+title: "Talks & Teaching"
 permalink: /portfolio/talkandteaching/
-robots: "index, follow" 
+description: "Invited talks, research presentations, and teaching by Kai Ye at LSE and the University of Warwick."
+robots: "index, follow"
 ---
-
-
-
-<header style="background: url('/images/cover.jpg') center center no-repeat; background-size: cover; padding: 60px 0; text-align: center; color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); position: relative;">
-    <h1 style="font-size: 3rem; font-weight: bold; margin-top: 20px;">Kai's Portfolio</h1>
-
-    <nav style="position: absolute; bottom: 20px; right: 40px; font-family: 'Arial', sans-serif;">
-        <a href="https://noncollapse.github.io/legacy/portfolio/research/" class="nav-link">Publications</a>
-        <a href="https://noncollapse.github.io/legacy/portfolio/talkandteaching/" class="nav-link">Teaching & Talks</a>
-        <a href="https://noncollapse.github.io/legacy/portfolio/posters/" class="nav-link">Posters</a>
-        <a href="https://noncollapse.github.io" class="nav-link">Home</a>
-    </nav>
-
-    <style>
-        .nav-link {
-            margin-right: 20px;
-            font-size: 1.1rem;
-            color: #fff;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .nav-link:hover {
-            font-size: 1.25rem;
-            text-decoration: underline;
-        }
-    </style>
+<header class="page-intro">
+  <h1>Talks &amp; teaching</h1>
+  <nav class="section-nav" aria-label="On this page">
+    <a href="#talks">Talks</a>
+    <a href="#teaching">Teaching</a>
+  </nav>
 </header>
-<!-- 主体内容区域 -->
-<div style="padding: 40px 20px; max-width: 1200px; margin: 0 auto; font-family: 'Arial', sans-serif;">
-
-
-    <section id="teaching" style="margin-bottom: 40px;">
-        <h2 style="margin-bottom: 32px; font-size: 2rem; font-weight: bold; color: #333;">Talks</h2>
-        <ul style="list-style-type: none; padding-left: 0; font-size: 1.1rem; color: #333;">
-        {% for item in site.data.alldetails.talk %}
-        <li style="margin-bottom: 16px;">
-            {{ item.event }}, {{ item.date }}, <strong>{{ item.title }}</strong>
-            {% if item.link %}
-            , <a href="{{ item.link }}" target="_blank" style="color: #007acc; text-decoration: none;">online record</a>
-            {% endif %}
-        </li>
-        {% endfor %}
-        </ul>
-
-        <!-- Class 部分 -->
-        <h2 style="margin: 48px 0 32px; font-size: 2rem; font-weight: bold; color: #333;">Class</h2>
-        {% for item in site.data.alldetails.teaching %}
-        <div style="margin-bottom: 30px;">
-        <h4 style="font-size: 1.3rem; font-weight: bold; color: #007acc;">{{ item.courseCode }}: {{ item.courseName }}</h4>
-        <p style="color: #555; font-size: 1.1rem;">{{ item.role }}</p>
-        <p><strong>Institution:</strong> {{ item.institution }}<br><strong>Semester:</strong> {{ item.semester }}</p>
-        {% comment %}
-        <p><strong>课程：</strong> {{ item.event }}<br><strong>时间：</strong> {{ item.date }}</p>
-        {% endcomment %}
-        </div>
-        {% endfor %}
-
-    </section>
-
-
-
-
-</div>
+<section id="talks" class="portfolio-section" aria-labelledby="talks-heading">
+  <div class="section-heading"><h2 id="talks-heading">Talks &amp; presentations</h2></div>
+  <ol class="talk-list">
+    {% for item in site.data.alldetails.talk %}
+    <li class="talk-entry">
+      <div class="entry-date"><time datetime="{{ item.datetime }}">{{ item.date }}</time></div>
+      <article class="entry-content">
+        <h3>{{ item.title }}</h3>
+        <p class="entry-event">{{ item.event }}<span class="entry-location"> · {{ item.location }}</span></p>
+        {% if item.description %}<p class="entry-description">{{ item.description }}</p>{% endif %}
+        {% if item.type or item.link or item.eventLink %}
+        <p class="entry-meta">
+          {% if item.type %}<span>{{ item.type }}</span>{% endif %}
+          <span class="entry-links">
+            {% if item.link %}<a href="{{ item.link }}" target="_blank" rel="noopener noreferrer" aria-label="Watch recording: {{ item.title | escape }}">[Recording]</a>{% endif %}
+            {% if item.eventLink %}<a href="{{ item.eventLink }}" target="_blank" rel="noopener noreferrer">[Conference details]</a>{% endif %}
+          </span>
+        </p>
+        {% endif %}
+      </article>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+<section id="teaching" class="portfolio-section" aria-labelledby="teaching-heading">
+  <div class="section-heading"><h2 id="teaching-heading">Teaching</h2></div>
+  <ul class="teaching-list">
+    {% for item in site.data.alldetails.teaching %}
+    <li class="teaching-entry">
+      <div class="entry-date">{{ item.semester }}</div>
+      <div class="entry-content">
+        <h3>{% if item.courseCode %}<span class="course-code">{{ item.courseCode }}</span> · {% endif %}{{ item.courseName }}</h3>
+        <p class="entry-event">{{ item.institution }}</p>
+        <p class="entry-meta">{{ item.role }} · {{ item.level }}</p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

@@ -1,11 +1,10 @@
 # Site settings
 title: Kai Ye
-description: 'Machine Learning PhD student at LSE'
+description: 'Statistics PhD student at LSE and Chief Technology Officer (CTO) at Stats-Powered AI'
 url: 'https://noncollapse.github.io'
 baseurl: '/legacy'
 profilepic: '/images/tzuehlke.jpg'
 bkimage: '/images/bk1.jpg'
-google_analytics: UA-XXXXXX-X
 font_awesome: '5125712fe4.js'
 robots: "index, follow"
 
