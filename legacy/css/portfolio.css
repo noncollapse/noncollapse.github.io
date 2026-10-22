@@ -20,6 +20,8 @@
 .portfolio-section { scroll-margin-top: 20px; margin-top: 24px; }
 .section-heading { padding-bottom: 6px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
 .section-heading h2 { font-family: Georgia, "Times New Roman", serif; font-size: 24px; font-weight: 400; letter-spacing: -.3px; }
+.talks-intro { color: var(--muted); font-size: 14px; margin-bottom: 18px !important; }
+.talks-intro a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 .talk-list, .paper-list, .teaching-list, .poster-list { list-style: none; padding: 0; margin: 0; }
 .paper-entry + .paper-entry, .talk-entry + .talk-entry, .teaching-entry + .teaching-entry { margin-top: 18px; }
 .entry-content h3, .paper-entry h3 { font-size: 17px; font-weight: 600; line-height: 1.4; }

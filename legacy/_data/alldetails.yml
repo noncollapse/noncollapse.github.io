@@ -1,4 +1,4 @@
-# Shared by the terminal and graphical sites. Last updated: 11 October 2026.
+# Shared by the terminal and graphical sites. Last updated: 22 October 2026.
 # New papers: https://scholar.google.com/citations?user=a7G8Yo8AAAAJ
 # Metadata checked against each linked paper. Acceptance supplied by Kai Ye.
 news:
@@ -125,6 +125,8 @@ published:
     desc: "AdaDetectGPT."
     tags: ["NeurIPS", "AdaDetectGPT", "Statistical Guarantees"]
 
+talksHomepage: https://noncollapse.github.io/kai-talks/
+
 talk:
   # The video description dates the live seminar to 22 August; uploaded in September.
   - title: "BASIS: Information Sharing for Single-Rollout LLM Reasoning"
@@ -132,6 +134,7 @@ talk:
     date: "22 August 2026"
     datetime: "2026-08-22"
     location: Online
+    type: Invited talk
     link: https://www.bilibili.com/video/BV1Juey6yEHG/
   - title: "Large Language Models (LLMs): Principles and Training Methods"
     event: "4th Conference on Machine Learning and Statistics (MLSTAT 2026)"

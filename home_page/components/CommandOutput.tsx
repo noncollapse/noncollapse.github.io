@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paper, RESEARCH_AREAS } from '../types';
-import { ExternalLink, FileText, Github, Calendar, MapPin, BookOpen, Video, Mail } from 'lucide-react';
+import { ExternalLink, FileText, Github, BookOpen, Video, Mail } from 'lucide-react';
 import { allDetails, convertToPaper } from '../services/projectsService';
 
 // --- ABOUT SECTION ---
@@ -121,24 +121,27 @@ export const PreprintsSection: React.FC = () => (
 export const TalksSection: React.FC = () => (
   <section className="mb-4">
     <h2 className="text-pink-400 mb-4 border-b border-pink-900 pb-2">{">>"} TALKS_AND_PRESENTATIONS</h2>
-    <div className="space-y-4">
+    <p className="text-gray-300 text-sm mb-5">
+      For full talk details and slides, visit my{' '}
+      <a href={allDetails.talksHomepage} target="_blank" rel="noopener noreferrer" className="text-pink-200 underline underline-offset-4">talks homepage ↗</a>.
+    </p>
+    <ol className="space-y-5">
       {allDetails.talk.map(talk => (
-        <article key={talk.title + talk.date} className="border-l-2 border-pink-800 pl-4 py-2">
-          <div className="flex flex-wrap gap-3 items-center text-xs text-pink-300 mb-2">
-            <time dateTime={talk.datetime} className="flex gap-2 items-center"><Calendar size={12} aria-hidden="true" />{talk.date}</time>
-            {talk.type && <span className="bg-pink-950 px-2 py-1">{talk.type}</span>}
+        <li key={talk.title + talk.date}>
+          <div className="flex flex-wrap gap-x-3 gap-y-1 items-center text-xs text-pink-300 mb-1">
+            <time dateTime={talk.datetime}>{talk.date}</time>
+            {talk.type && <span>{talk.type}</span>}
           </div>
           <h3 className="text-pink-200 font-bold">{talk.title}</h3>
-          <p className="text-gray-300 text-sm mt-2">{talk.event}</p>
-          <p className="flex items-start gap-2 text-gray-400 text-sm mt-1"><MapPin size={14} className="shrink-0 mt-1" aria-hidden="true" />{talk.location}</p>
-          {talk.description && <p className="text-gray-300 text-sm mt-3">{talk.description}</p>}
-          <div className="flex flex-wrap gap-4 mt-3 text-sm">
+          <p className="text-gray-400 text-sm mt-1">{talk.event} · {talk.location}</p>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 mt-2 text-sm">
+            <a href={allDetails.talksHomepage} target="_blank" rel="noopener noreferrer" aria-label={`Slides homepage for ${talk.title}`} className="inline-flex items-center gap-2 text-pink-200 underline underline-offset-4"><FileText size={14} aria-hidden="true" />Slides</a>
             {talk.link && <a href={talk.link} target="_blank" rel="noopener noreferrer" aria-label={`Watch recording: ${talk.title}`} className="inline-flex items-center gap-2 text-pink-200 underline underline-offset-4"><Video size={14} aria-hidden="true" />Watch recording</a>}
             {talk.eventLink && <a href={talk.eventLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-pink-200 underline underline-offset-4"><ExternalLink size={14} aria-hidden="true" />Conference details</a>}
           </div>
-        </article>
+        </li>
       ))}
-    </div>
+    </ol>
   </section>
 );
 

@@ -11,6 +11,8 @@ Edit `legacy/_data/alldetails.yml` for publications, preprints, talks, teaching,
 
 Use explicit publication years and keep accepted papers in `published`, with `status: Accepted` where appropriate. Talk `link` fields point to recordings; `eventLink` fields point to event pages. Teaching records separate the institution from the degree level and optional course code.
 
+`talksHomepage` is the shared destination for the talks overview and every Slides link in both versions; it points to the talks homepage, rather than an individual slide deck.
+
 ## Build and check
 
 Use Node.js 20+ and a Ruby version compatible with `legacy/Gemfile` (GitHub Actions uses Ruby 3.1).

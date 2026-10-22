@@ -40,6 +40,7 @@ export interface TeachingData {
 
 export interface AllDetailsYaml {
   news: { text: string; url: string }[];
+  talksHomepage: string;
   preprints: ProjectData[];
   published: ProjectData[];
   talk: TalkData[];

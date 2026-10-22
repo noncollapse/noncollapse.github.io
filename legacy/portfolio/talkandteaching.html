@@ -14,6 +14,7 @@ robots: "index, follow"
 </header>
 <section id="talks" class="portfolio-section" aria-labelledby="talks-heading">
   <div class="section-heading"><h2 id="talks-heading">Talks &amp; presentations</h2></div>
+  <p class="talks-intro">For full talk details and slides, visit my <a href="{{ site.data.alldetails.talksHomepage }}" target="_blank" rel="noopener noreferrer">talks homepage ↗</a>.</p>
   <ol class="talk-list">
     {% for item in site.data.alldetails.talk %}
     <li class="talk-entry">
@@ -21,16 +22,14 @@ robots: "index, follow"
       <article class="entry-content">
         <h3>{{ item.title }}</h3>
         <p class="entry-event">{{ item.event }}<span class="entry-location"> · {{ item.location }}</span></p>
-        {% if item.description %}<p class="entry-description">{{ item.description }}</p>{% endif %}
-        {% if item.type or item.link or item.eventLink %}
         <p class="entry-meta">
           {% if item.type %}<span>{{ item.type }}</span>{% endif %}
           <span class="entry-links">
+            <a href="{{ site.data.alldetails.talksHomepage }}" target="_blank" rel="noopener noreferrer" aria-label="Slides homepage for {{ item.title | escape }}">[Slides]</a>
             {% if item.link %}<a href="{{ item.link }}" target="_blank" rel="noopener noreferrer" aria-label="Watch recording: {{ item.title | escape }}">[Recording]</a>{% endif %}
             {% if item.eventLink %}<a href="{{ item.eventLink }}" target="_blank" rel="noopener noreferrer">[Conference details]</a>{% endif %}
           </span>
         </p>
-        {% endif %}
       </article>
     </li>
     {% endfor %}
