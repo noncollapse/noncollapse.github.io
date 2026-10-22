@@ -121,9 +121,9 @@ export const PreprintsSection: React.FC = () => (
 export const TalksSection: React.FC = () => (
   <section className="mb-4">
     <h2 className="text-pink-400 mb-4 border-b border-pink-900 pb-2">{">>"} TALKS_AND_PRESENTATIONS</h2>
-    <p className="text-gray-300 text-sm mb-5">
+    <p className="text-pink-100 text-lg md:text-xl font-bold leading-relaxed mb-6">
       For full talk details and slides, visit my{' '}
-      <a href={allDetails.talksHomepage} target="_blank" rel="noopener noreferrer" className="text-pink-200 underline underline-offset-4">talks homepage ↗</a>.
+      <a href={allDetails.talksHomepage} target="_blank" rel="noopener noreferrer" className="text-pink-300 hover:text-pink-100 underline decoration-2 underline-offset-4">talks homepage ↗</a>.
     </p>
     <ol className="space-y-5">
       {allDetails.talk.map(talk => (
