@@ -160,7 +160,7 @@ export const TeachingsSection: React.FC = () => (
   </section>
 );
 
-export const HelpSection: React.FC = () => (
+export const HelpSection: React.FC<{ onExplore: () => void }> = ({ onExplore }) => (
   <div className="mb-4 text-sm">
     <p className="mb-2 text-pink-300">AVAILABLE COMMANDS:</p>
     <dl className="grid grid-cols-[6rem_minmax(0,1fr)] gap-x-4 gap-y-2 text-gray-300">
@@ -175,5 +175,6 @@ export const HelpSection: React.FC = () => (
         ['help', 'Display this help menu.'],
       ].map(([command, description]) => <React.Fragment key={command}><dt className="text-pink-400 font-bold">{command}</dt><dd>{description}</dd></React.Fragment>)}
     </dl>
+    <button type="button" onClick={onExplore} className="mt-4 text-xs text-gray-500 hover:text-pink-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink-300 underline decoration-dotted underline-offset-4">Some commands are undocumented.</button>
   </div>
 );

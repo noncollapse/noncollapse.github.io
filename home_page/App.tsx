@@ -9,12 +9,24 @@ import {
   HelpSection,
   NewsSection
 } from './components/CommandOutput';
-import { Terminal as TerminalIcon, Battery, Wifi, Cpu } from 'lucide-react';
+import { Terminal as TerminalIcon, Battery, BatteryFull, Wifi, Cpu } from 'lucide-react';
+import {
+  HIDDEN_FILES, HiddenFiles, HiddenFile, CollapseEgg, CoffeeEgg, RewardGame, ReviewerEgg, CommandLink,
+  type HiddenFileName,
+} from './components/EasterEggs';
+import { BanditGame } from './components/BanditGame';
+import { SeedSky } from './components/SeedSky';
+import { DiscoveryProvider, useDiscovery } from './components/Discovery';
+import { isValidSeed } from './components/egg-logic';
 
-const App: React.FC = () => {
+const ResearchTerminal: React.FC = () => {
+  const { discover, complete } = useDiscovery();
   const [history, setHistory] = useState<TerminalLine[]>([]);
   const [input, setInput] = useState('');
   const [bootSequence, setBootSequence] = useState(true);
+  const [caffeinated, setCaffeinated] = useState(false);
+  const coffeeCount = useRef(0);
+  const commandSequence = useRef(0);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -22,7 +34,7 @@ const App: React.FC = () => {
   useEffect(() => {
     if (scrollRef.current) {
       const latest = history[history.length - 1];
-      const result = scrollRef.current.lastElementChild?.previousElementSibling;
+      const result = scrollRef.current.querySelector(`[data-terminal-line="${latest?.id}"]`);
       if (latest?.type === 'component' && result instanceof HTMLElement) {
         scrollRef.current.scrollTop = result.offsetTop - scrollRef.current.offsetTop;
       } else {
@@ -75,10 +87,11 @@ const App: React.FC = () => {
     return () => timers.forEach(clearTimeout);
   }, []);
 
-  const handleCommand = async (cmd: string) => {
-    const cleanCmd = cmd.trim().toLowerCase();
+  const handleCommand = (cmd: string) => {
+    const cleanCmd = cmd.trim().toLowerCase().replace(/\s+/g, ' ');
+    const commandId = ++commandSequence.current;
     const newHistoryItem: TerminalLine = {
-      id: `cmd-${Date.now()}`,
+      id: `cmd-${commandId}`,
       type: 'input',
       content: cleanCmd
     };
@@ -86,33 +99,81 @@ const App: React.FC = () => {
     setHistory(prev => [...prev, newHistoryItem]);
     setInput('');
 
+    const show = (content: React.ReactNode) => {
+      setHistory(prev => [...prev, { id: `res-${commandId}`, type: 'component', content }]);
+    };
+
+    if (cleanCmd.startsWith('cat ')) {
+      const name = cleanCmd.slice(4);
+      if (HIDDEN_FILES.includes(name as HiddenFileName)) {
+        discover(`file:${name as HiddenFileName}`);
+        show(<HiddenFile name={name as HiddenFileName} onCommand={handleCommand} />);
+      } else {
+        show(<span className="text-gray-400">cat: {name}: No such file. Try <button type="button" className="egg-command" onClick={() => handleCommand('ls -a')}>ls -a</button>.</span>);
+      }
+      return;
+    }
+
+    if (cleanCmd === 'seed' || cleanCmd.startsWith('seed ')) {
+      const seed = cleanCmd === 'seed' ? '42' : cleanCmd.slice(5);
+      if (isValidSeed(seed)) show(<SeedSky seed={seed} onCommand={handleCommand} />);
+      else show(<p className="text-gray-400">Choose 1–32 digits, for example <button type="button" className="egg-command" onClick={() => handleCommand('seed 42')}>seed 42</button>.</p>);
+      return;
+    }
+
     switch (cleanCmd) {
+      case 'ls -a':
+      case 'ls -la':
+        show(<HiddenFiles onCommand={handleCommand} />);
+        break;
+      case 'collapse':
+      case 'noncollapse':
+        discover('collapse');
+        show(<CollapseEgg onCommand={handleCommand} />);
+        break;
+      case 'coffee':
+        discover('coffee');
+        coffeeCount.current += 1;
+        setCaffeinated(true);
+        show(<CoffeeEgg cups={coffeeCount.current} onCommand={handleCommand} />);
+        break;
+      case 'reward':
+        show(<RewardGame onCommand={handleCommand} />);
+        break;
+      case 'reviewer2':
+      case 'rebuttal':
+        discover(cleanCmd);
+        show(<ReviewerEgg rebuttal={cleanCmd === 'rebuttal'} onCommand={handleCommand} />);
+        break;
+      case 'bandit':
+        show(<BanditGame onCommand={handleCommand} />);
+        break;
       case 'help':
       case '':
-        setHistory(prev => [...prev, { id: `res-${Date.now()}`, type: 'component', content: <HelpSection /> }]);
+        show(<HelpSection onExplore={() => handleCommand('ls -a')} />);
         break;
       case 'about':
-        setHistory(prev => [...prev, { id: `res-${Date.now()}`, type: 'component', content: <AboutSection /> }]);
+        show(<AboutSection />);
         break;
       case 'pubs':
       case 'publications':
       case 'papers': // keep papers as alias just in case
-        setHistory(prev => [...prev, { id: `res-${Date.now()}`, type: 'component', content: <PubsSection /> }]);
+        show(<PubsSection />);
         break;
       case 'preprints':
-        setHistory(prev => [...prev, { id: `res-${Date.now()}`, type: 'component', content: <PreprintsSection /> }]);
+        show(<PreprintsSection />);
         break;
       case 'talks':
-        setHistory(prev => [...prev, { id: `res-${Date.now()}`, type: 'component', content: <TalksSection /> }]);
+        show(<TalksSection />);
         break;
       case 'teachings':
       case 'teaching':
-        setHistory(prev => [...prev, { id: `res-${Date.now()}`, type: 'component', content: <TeachingsSection /> }]);
+        show(<TeachingsSection />);
         break;
       case 'gui':
       case 'graphical user interface':
         setHistory(prev => [...prev, {
-          id: `sys-${Date.now()}`,
+          id: `sys-${commandId}`,
           type: 'system',
           content: <span className="text-pink-400 animate-pulse">{">>"} INITIATING GUI SUBSYSTEM... REDIRECTING...</span>
         }]);
@@ -126,7 +187,7 @@ const App: React.FC = () => {
         break;
       default:
         setHistory(prev => [...prev, {
-          id: `err-${Date.now()}`,
+          id: `err-${commandId}`,
           type: 'system',
           content: <span className="text-red-500">Command not found: {cleanCmd}. Type 'help' for available commands.</span>
         }]);
@@ -163,7 +224,9 @@ const App: React.FC = () => {
           <div className="flex items-center space-x-4">
              <div className="hidden sm:flex space-x-2 text-gray-500">
                 <Wifi size={14} />
-                <Battery size={14} />
+                <span role="img" aria-label={caffeinated ? 'Research station fully charged' : 'Research station battery'} title={caffeinated ? 'Recharged with coffee' : 'Research station battery'}>
+                  {caffeinated ? <BatteryFull size={14} className="text-pink-400" /> : <Battery size={14} />}
+                </span>
                 <Cpu size={14} />
              </div>
              <a href="/legacy/" className="text-xs text-pink-300 underline underline-offset-4">GUI ↗</a>
@@ -185,7 +248,7 @@ const App: React.FC = () => {
           }}
         >
           {history.map((line) => (
-            <div key={line.id} className="mb-2 break-words">
+            <div key={line.id} data-terminal-line={line.id} className="mb-2 break-words">
               {line.type === 'input' && (
                 <div className="flex">
                   <span className="mr-2 text-pink-600 shrink-0 font-bold">Kai_Ye@lab:~$</span>
@@ -203,6 +266,8 @@ const App: React.FC = () => {
               )}
             </div>
           ))}
+
+          {complete && <p className="egg-discovery-notice">The supervisor has something for you: <CommandLink command="cat .secret" onCommand={handleCommand} /></p>}
 
           {/* Active Input Line */}
           {!bootSequence && (
@@ -239,5 +304,7 @@ const App: React.FC = () => {
     </div>
   );
 };
+
+const App: React.FC = () => <DiscoveryProvider><ResearchTerminal /></DiscoveryProvider>;
 
 export default App;
