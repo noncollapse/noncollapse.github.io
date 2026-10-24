@@ -15,7 +15,7 @@ Use explicit publication years and keep accepted papers in `published`, with `st
 
 ## Build and check
 
-Use Node.js 20+ and a Ruby version compatible with `legacy/Gemfile` (GitHub Actions uses Ruby 3.1).
+Use Node.js 20+ and a Ruby version compatible with `legacy/Gemfile` (GitHub Actions uses Ruby 3.1 on Ubuntu 24.04).
 
 ```sh
 cd home_page
